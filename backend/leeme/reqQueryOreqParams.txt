@@ -1,0 +1,7 @@
+Qué es lo correcto según buenas prácticas REST?
+Caso de uso	¿Qué se recomienda usar?
+
+Acceder a un recurso específico:    ✅ req.params
+Aplicar filtros, orden o límites	✅ req.query
+Pasar parámetros obligatorios	    ✅ req.params
+Pasar parámetros opcionales	        ✅ req.query
