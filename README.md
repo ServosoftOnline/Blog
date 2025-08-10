@@ -39,7 +39,7 @@ Blog/
 
 🚀 Instalación y ejecución
 📜 Español
-Paso	Comando                    / Acción
+Paso	Comando                                     Acción
 1️⃣ Clonar el repositorio	        git clone https://github.com/ServosoftOnline/Blog.git
 2️⃣ Instalar dependencias backend	cd Blog/backend && npm install
 3️⃣ Instalar dependencias frontend	cd ../frontend && npm install
@@ -50,8 +50,8 @@ Esto iniciará frontend y backend de forma simultánea.
 
 🚀 Installation & Running (English)
 📜 English
-Step	Command                     / Action
-1️⃣ Clone repository	git clone   https://github.com/ServosoftOnline/Blog.git
+Step	Command                                     Action
+1️⃣ Clone repository	            git clone https://github.com/ServosoftOnline/Blog.git
 2️⃣ Install backend dependencies	cd Blog/backend && npm install
 3️⃣ Install frontend dependencies	cd ../frontend && npm install
 4️⃣ Run the project	                cd .. && npm run dev
