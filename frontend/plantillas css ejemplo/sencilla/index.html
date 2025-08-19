@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Culinario</title>
+<style>
+/* ===== Colores temáticos ===== */
+:root {
+  --fondo: #FAF9F6;
+  --verdeOscuro: #2E7D32;
+  --verdeClaro: #81C784;
+  --beige: #F5F1E6;
+  --marron: #8D6E63;
+  --naranja: #FF8C42;
+  --rojoSuave: #C94C4C;
+  --textoPrincipal: #333333;
+  --textoSecundario: #666666;
+  --blanco: #FFFFFF;
+}
+
+/* ===== Reset y base ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background: var(--fondo);
+  color: var(--textoPrincipal);
+  line-height: 1.6;
+}
+
+/* ===== Layout ===== */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav nav nav"
+    "content content lateral"
+    "footer footer footer";
+  grid-template-rows: 100px 60px auto 80px;
+  grid-template-columns: 2fr 1fr;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--beige);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--marron);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ===== Navegación ===== */
+.nav {
+  grid-area: nav;
+  background: linear-gradient(90deg, var(--marron) 0%, var(--naranja) 100%);
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.nav li {
+  margin: 0 20px;
+}
+
+.nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+/* ===== Contenido principal ===== */
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* ===== Artículos ===== */
+.articulo-item {
+  display: flex;
+  gap: 20px;
+  background: var(--blanco);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.articulo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.imagen-articulo {
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px 0 0 10px;
+}
+
+.imagen-articulo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.datos {
+  flex-grow: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.datos h3 {
+  color: var(--verdeOscuro);
+  margin-bottom: 10px;
+}
+
+.datos p {
+  color: var(--textoSecundario);
+  margin-bottom: 8px;
+}
+
+/* Botones dentro de artículo */
+.botones-articulos {
+  display: flex;
+  gap: 10px;
+}
+
+.botones-articulos .edit,
+.botones-articulos .delete {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  color: var(--blanco);
+}
+
+.botones-articulos .edit {
+  background: var(--verdeClaro);
+}
+
+.botones-articulos .edit:hover {
+  background: var(--verdeOscuro);
+}
+
+.botones-articulos .delete {
+  background: var(--rojoSuave);
+}
+
+.botones-articulos .delete:hover {
+  background: #A83232;
+}
+
+/* ===== Barra lateral ===== */
+.lateral {
+  grid-area: lateral;
+  background: var(--beige);
+  padding: 20px;
+  border-left: 1px solid var(--marron);
+  border-radius: 10px;
+}
+
+.lateral > div {
+  background: var(--blanco);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* ===== Footer ===== */
+.footer {
+  grid-area: footer;
+  background: var(--beige);
+  color: var(--marron);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+/* ===== Formularios ===== */
+.formulario {
+  background: var(--blanco);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.formulario input[type="text"],
+.formulario textarea,
+.formulario input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--mediumSmoke);
+  background: var(--fondo);
+}
+
+.formulario input[type="submit"] {
+  margin-top: 15px;
+  background: var(--naranja);
+  color: var(--blanco);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.formulario input[type="submit"]:hover {
+  background: var(--marron);
+}
+
+/* ===== Mensajes ===== */
+.mensaje-error { color: #C94C4C; font-weight: bold; }
+.mensaje-exito { color: #2E7D32; font-weight: bold; }
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "lateral"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .articulo-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagen-articulo {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+  }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="header">🍴 Blog Culinario</header>
+
+  <nav class="nav">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Recetas</a></li>
+      <li><a href="#">Crear receta</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <article class="articulo-item">
+      <div class="imagen-articulo">
+        <img src="https://via.placeholder.com/180" alt="Receta">
+      </div>
+      <div class="datos">
+        <h3>Ensalada Mediterránea</h3>
+        <p>Creado: 19/08/2025</p>
+        <p>Modificado: 19/08/2025</p>
+        <p>Una deliciosa ensalada con tomates, pepino y aceitunas.</p>
+        <div class="botones-articulos">
+          <button class="edit">Editar</button>
+          <button class="delete">Borrar</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <aside class="lateral">
+    <div>Formulario / Widgets / Info adicional</div>
+  </aside>
+
+  <footer class="footer">© 2025 Blog Culinario</footer>
+</div>
+</body>
+</html>

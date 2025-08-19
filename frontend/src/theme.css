@@ -1,0 +1,15 @@
+/* ===== Colores temáticos ===== */
+:root {
+  --fondo: #FFF8F0;
+  --verdeOliva: #556B2F;
+  --verdeClaro: #6B8A5A;
+  --naranjaQuemado: #FF7F50;
+  --beige: #FDF5E6;
+  --marron: #7B3F00;
+  --textoPrincipal: #3A3A3A;
+  --textoSecundario: #6D6D6D;
+  --blanco: #FFFFFF;
+  --grisClaro: #EAEAEA;
+  --grisMedio: #CFCFCF;
+  --rojoSuave: #D9534F;
+}

@@ -1,0 +1,98 @@
+
+
+- Este proyecto usa:
+
+    - Comunes:
+
+        - Vite. 
+        - express
+
+        - nodemon
+            - Dependencia solo en modo desarrollo para iniciar el servidor backend
+            - npm install nodemon --save-dev
+
+        - concurrently
+            - Que permite ejecutar los comandos de ejecución del front y del backend en los scripts del package.json del raiz
+            - npm install concurrently --save-dev
+
+    - Para el backend:
+        - mongoDb
+
+        - mongoose
+            - Es una capa de abstracción sobre mongoDb
+            - Proporciona una libería con metodos para hacer conexiones a la bbdd, búsquedas, guardar datos, etc de forma más fácil
+            - npm i mongoose
+
+        - multer
+            - Librería para poder subir archivos en el backend
+            - Es un middleware que se aplica a una ruta
+            - npm i multer
+            - Para poder subir archivos tuve que pasar a usar postman. Thunder client era de pago para hacer esto.
+
+        - validador 
+            - Librería para poder validad datos en el backend
+            - Documentacion: https://www.npmjs.com/package/validator
+            - npm i validator
+
+        - CORS
+            - Resuelve el acceso cruzado entre dominios
+            - Resuelve las peticiones a servidores locales
+            - npm i cors
+
+        - mongo compass
+            - como herramienta gráfica para trabajar con la bbdd
+            - crear la bbdd, colecciones
+
+    - Para el front
+        - react router dom
+            - Para hacer las rutas del front
+            - npm install react-router-dom
+    
+
+- Sigue el modelo vista controlador:
+
+    - Creo un modelo, un modelo con sus métodos y una ruta para llegar a ese controlador
+    - El modelo se encuentra dentro de la carpeta modelos y se llama Articulo.js
+    - La vista se corresponde con los objetos devueltos desde el backend
+    - La rutas se encuentran en archivos dentro de la carpeta rutas
+
+    - Su controlador contiene los siguiente métodos para poder realizar diferentes funciones:
+
+        - prueba. Me permite probar si la respuesta de este controlador llega a devolverse.
+        - datosDelCurso responde un objeto json con información sobre este curso
+        - restoDeCursos resonde un array de objetos json con información sobre otros cursos
+        - crearDocumento permite crear un documento en la coleccion articulos creadas en mongoDb
+        - listadoArticulos devuelve un array de objetos con cada uno de los articulos de la coleccion
+        - uno. le paso un id y devuelve el articulo que contenga ese id
+        - borrar. Le paso un id y si existe un articulo con ese id elimina el documento
+        - editar. Le paso un id y la nueva información. Si existe un documento con ese id lo edita con la nueva informacion
+        - subir. Sube una imagen al backend y la almacena en imagenes/articulos
+            - Si quiero acceder a ella gracias a la funcion express.static insertada en index.js el navegador la muestra
+
+        - buscador. Localiza el o los articulos que contenga un string pasado como parámetro
+
+    - Pasos para su creación:
+
+        1- Realizar el backend con las operaciones básicas de un CRUD
+        2- Hacer la estructura de carpetas para el front creando en su interior los componentes con el contenido básico
+
+            - frontend/src/components
+
+                - frontend/src/components/layout
+                    - Footer, Header, Nav y SideBar
+
+                - frontend/src/components/pages
+                    - Componentes asociados a cada una de las páginas que se mostrarán en la sección ppal de la pagina
+
+            - frontend/src/hooks
+                - Contendrá los custom hooks
+
+            - frontend/src/routing
+                - Contendrá todas las rutas del proyecto
+         
+
+        3- Crear las rutas del front
+        4. Desarrollar la plantilla rellenando los layout
+        5.- Crear un hook personalizado para que realize las operaciones con la bbdd. En este proyecto la llame useApi.jsx
+        5. Desarrollar cada uno de los componentes para que realicen su funcion
+        

@@ -55,7 +55,7 @@ routerArticulo.post('/crear', crearDocumento);
 */
 routerArticulo.get('/listar', listadoArticulos);
 
-// ruta que devuelve un solo artículo. Ej ruta correcta: http://localhost:3900/api/obtener-articulo/6890bfff407b12ad13e27506
+// ruta que devuelve un solo artículo. Ej ruta correcta: http://localhost:3900/api/articulo/68a0b0c6e1727de97e6620fe
 routerArticulo.get('/articulo/:id', uno);
 
 // Ruta que elimina un articulo

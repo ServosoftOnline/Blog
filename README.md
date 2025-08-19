@@ -1,6 +1,7 @@
 # 🍽️🚧 **BLOG GASTRONÓMICO EN CONSTRUCCIÓN / FOOD BLOG UNDER CONSTRUCTION** 🚧🍽️
 
-> 🛠️ **Español:** Este proyecto está en desarrollo activo. Funcionalidades, recetas, código y documentación pueden cambiar en cualquier momento.  
+> 🛠️ **Español:** Este proyecto está en desarrollo activo. Funcionalidades, recetas, código y documentación pueden cambiar en cualquier momento. 
+ 
 > 🛠️ **English:** This project is under active development. Features, recipes, code, and documentation may change at any time.  
 
 ---

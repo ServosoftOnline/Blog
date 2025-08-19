@@ -1,0 +1,37 @@
+/* Colores importados en styles.css */
+
+:root {
+  --fondo: #F9F9F9;
+  --naranja: #e67e22;
+  --amarillo: #f39c12;
+  --verdeOscuro: #27ae60;
+  --verdeClaro: #2ecc71;
+  --marron: #8e5d3b;
+  --beige: #d7b49e;
+  --rojoSuave: #c0392b;
+
+  --verdeClaro1: #E4F2EB;
+  --verdeClaro2: #D8ECE1;
+  --verdeMedio1: #CBE2D5;
+  --verdeMedio2: #A6C9B7;
+  --verdeOscuro1: #80A595;
+  --verdeOscuro2: #5B8074;
+
+  --blanco: #FFFFFF;
+  --negro: #333333;
+  --nearBlack1: #191919;
+  --nearBlack2: #333333;
+  --nearBlack3: #4D4D4D;
+  --nearBlack4: #666666;
+  --nearBlack5: #808080;
+
+  --rojo: #E34747;
+  --rojoIntenso: #990000;
+
+  --smoke: #F5F5F5;
+  --lightSmoke: #E0E0E0;
+  --mediumSmoke: #CCCCCC;
+  --darkSmoke: #B3B3B3;
+  --darkerSmoke: #999999;
+  --darkestSmoke: #808080;
+}

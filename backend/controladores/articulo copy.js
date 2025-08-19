@@ -226,14 +226,11 @@ export const editar = async (req, res) => {
             });
         }
 
-        // Busco el articulo y lo actualizo incluido la fecha de actualización del articulo
+        // Busco el articulo y lo actualizo.
         // { new: true }	Devuelve el artículo ya actualizado, útil para confirmar y mostrar datos.
         const encuentraYActualiza = await Articulo.findOneAndUpdate(
             { _id: idAEditar },
-            {
-                ...parametros,                  
-                fechaActualizacion: new Date() 
-            },            
+            parametros,
             { new: true }
         );       
 

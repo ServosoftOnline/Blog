@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Gourmet</title>
+<style>
+/* ===== Colores temáticos ===== */
+:root {
+  --fondo: #FFF8F0;
+  --verdeOliva: #556B2F;
+  --verdeClaro: #A3C586;
+  --naranjaQuemado: #FF7F50;
+  --beige: #FDF5E6;
+  --marron: #7B3F00;
+  --textoPrincipal: #3A3A3A;
+  --textoSecundario: #6D6D6D;
+  --blanco: #FFFFFF;
+  --grisClaro: #EAEAEA;
+  --grisMedio: #CFCFCF;
+  --rojoSuave: #D9534F;
+}
+
+/* ===== Reset y base ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  background: var(--fondo);
+  color: var(--textoPrincipal);
+  line-height: 1.7;
+}
+
+/* ===== Layout ===== */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav nav nav"
+    "content content lateral"
+    "footer footer footer";
+  grid-template-rows: 100px 70px auto 90px;
+  grid-template-columns: 2fr 1fr;
+  min-height: 100vh;
+  gap: 10px;
+}
+
+/* ===== Header ===== */
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--marron);
+  background: var(--beige);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  letter-spacing: 1px;
+}
+
+/* ===== Navegación ===== */
+.nav {
+  grid-area: nav;
+  background: var(--verdeOliva);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.nav li {
+  margin: 0 20px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 1.25rem; /* fuente más grande */
+  font-weight: 600;
+  color: var(--blanco);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.nav a:hover {
+  transform: scale(1.2); /* solo agranda fuente */
+}
+
+/* ===== Contenido principal ===== */
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 20px;
+}
+
+/* ===== Artículos ===== */
+.articulo-item {
+  display: flex;
+  flex-direction: row;
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.articulo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.imagen-articulo {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imagen-articulo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.articulo-item:hover .imagen-articulo img {
+  transform: scale(1.05);
+}
+
+.datos {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.datos h3 {
+  color: var(--verdeOliva);
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.datos p {
+  color: var(--textoSecundario);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Botones dentro de artículo */
+.botones-articulos {
+  display: flex;
+  gap: 12px;
+}
+
+.botones-articulos .edit,
+.botones-articulos .delete {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  color: var(--blanco);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.botones-articulos .edit {
+  background: linear-gradient(45deg, var(--verdeClaro), var(--verdeOliva));
+}
+
+.botones-articulos .edit:hover {
+  background: linear-gradient(45deg, var(--verdeOliva), var(--verdeClaro));
+  transform: scale(1.05);
+}
+
+.botones-articulos .delete {
+  background: linear-gradient(45deg, var(--rojoSuave), #990000);
+}
+
+.botones-articulos .delete:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #990000, var(--rojoSuave));
+}
+
+/* ===== Barra lateral ===== */
+.lateral {
+  grid-area: lateral;
+  background: var(--beige);
+  padding: 20px;
+  border-left: 1px solid var(--grisMedio);
+  border-radius: 12px;
+}
+
+.lateral > div {
+  background: var(--blanco);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+/* ===== Estilos del buscador en el aside ===== */
+.lateral .search {
+  background: var(--blanco);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.lateral .search .title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--verdeOliva);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.lateral .search form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lateral .search input[type="text"] {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--grisMedio);
+  outline: none;
+  transition: 0.3s;
+}
+
+.lateral .search input[type="text"]:focus {
+  border-color: var(--verdeClaro);
+  box-shadow: 0 0 6px rgba(38, 167, 97, 0.4);
+}
+
+.lateral .search input[type="submit"] {
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, var(--verdeClaro), var(--verdeOliva));
+  color: var(--blanco);
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.lateral .search input[type="submit"]:hover {
+  background: linear-gradient(45deg, var(--verdeOliva), var(--verdeClaro));
+  transform: scale(1.05);
+}
+
+
+/* ===== Footer ===== */
+.footer {
+  grid-area: footer;
+  background: var(--beige);
+  color: var(--marron);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.08);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "lateral"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .articulo-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagen-articulo {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="header">🍴 Blog Gourmet</header>
+
+  <nav class="nav">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Recetas</a></li>
+      <li><a href="#">Crear receta</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <article class="articulo-item">
+      <div class="imagen-articulo">
+        <img src="https://via.placeholder.com/200" alt="Receta">
+      </div>
+      <div class="datos">
+        <h3>Ensalada Mediterránea</h3>
+        <p>Creado: 19/08/2025</p>
+        <p>Modificado: 19/08/2025</p>
+        <p>Una deliciosa ensalada con tomates, pepino y aceitunas.</p>
+        <div class="botones-articulos">
+          <button class="edit">Editar</button>
+          <button class="delete">Borrar</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <aside class="lateral">
+    <div>Formulario / Widgets / Info adicional</div>
+  </aside>
+
+  <footer class="footer">© 2025 Blog Gourmet</footer>
+</div>
+</body>
+</html>

@@ -40,11 +40,6 @@ const ArticuloSchema = Schema({
         default: Date.now
     },
 
-    fechaActualizacion: {
-        type: Date,
-        default: Date.now
-    },
-
     imagen: {
         type: String,
         default: "default.jpeg"
