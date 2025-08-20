@@ -1,4 +1,4 @@
-// COMPONENTE QUE MUESTRA UN SOLO ARTICULO
+// COMPONENTE QUE MUESTRA LA PANTALLA ANTES DE CONFIRMAR LA ELIMINACIÓN DE UN ARTICULO
 
 import { Global } from '../../helpers/Global';
 import { Images } from '../../helpers/Images';
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 // Componente
-const Articulo = () => {
+const Eliminar = () => {
 
     // Obtengo el id pasado por parámetro y creo mi cte para navegar
     const {id} = useParams();
@@ -33,12 +33,22 @@ const Articulo = () => {
     
     // Si se hubiera producirdo un error devuelvo el mensaje
     if (error) return <h3 className="jumbo">Error: {error}</h3>;    
-    
+
+    // Funcion para que elimina un articulo
+    const eliminar = async (id) => {
+        
+        const urlDelete = Global.url + 'articulo/' + id;
+        await fetchData(urlDelete, null, 'DELETE');
+
+        // Redirigir tras eliminar
+        navigate("/articulos");        
+    };
+
     // Renderizo
     return (        
         <article className="articulo-detalle">
+            <h2 className='eliminar-receta'>Confirmar eliminación de la receta</h2>
 
-            <h2>{datos.consulta.titulo}</h2>
             {/* Imagen */}
             <div className="imagen-articulo grande">
                 <img src={Images.url + datos.consulta.imagen} alt={datos.consulta.titulo} />
@@ -46,32 +56,31 @@ const Articulo = () => {
 
             {/* Datos */}
             <div className="datos">
-                <h3>Receta: {datos.consulta.titulo}</h3>
+                <h3>{datos.consulta.titulo}</h3>
                 <div className='fechas'>
                 
                     <p className="fecha">
-                        Receta creada: {" "} 
+                        Creado: {" "} 
                         {fechaFormateada(datos.consulta.fecha)} 
                         <span className="relativa"> ( {tiempoRelativo(datos.consulta.fecha)} )</span>
                     </p>                      
 
                     <p className="fecha">
-                        Última fecha de modificación:  {" "}
+                        Modificado:  {" "}
                         {fechaFormateada(datos.consulta.fechaActualizacion)} 
                         <span className="relativa"> ( {tiempoRelativo(datos.consulta.fechaActualizacion)} )</span>
                     </p> 
 
-                </div>
-
-                                 
+                </div>  
                 
-                <p className='contenido'>{datos.consulta.contenido}</p>                              
+                <p>{datos.consulta.contenido}</p>                              
 
                 {/* Botones */}
                 <div className="botones-articulos">
-                    <Link to={"/editar/" + datos.consulta._id} className="edit">Editar</Link>                                        
-                    <Link to={"/eliminar/" + datos.consulta._id} className="delete">Borrar</Link>
-                    <Link to="/articulos" className="back">Volver</Link>                     
+                    <Link to="/articulos">
+                        <button className="back">Volver</button>
+                    </Link>
+                    <button className="delete" onClick={() => {eliminar(datos.consulta._id)}}>Confirme su eliminación. Acción definitiva</button>
                 </div>
             </div>
 
@@ -79,4 +88,4 @@ const Articulo = () => {
     );    
 }
  
-export default Articulo;
+export default Eliminar;

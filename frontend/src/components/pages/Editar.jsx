@@ -3,16 +3,19 @@ import { Global } from "../../helpers/Global";
 import { Images } from "../../helpers/Images"; 
 import { useEffect } from "react";
 import { useParams} from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 // Componente
 const Editar = () => {
 
-    // Obtengo el id
+    // Obtengo el id y creo la cte para redirigir
     const { id } = useParams();    
+    const navigate = useNavigate();
+
+    
 
     // 1️⃣ GET: obtener el artículo con autoFetch = true
-    const { datos: articulo, cargando } = useApi(`${Global.url}articulo/${id}`, "GET", null, true);
-    console.log(articulo);
+    const { datos: articulo, cargando } = useApi(`${Global.url}articulo/${id}`, "GET", null, true);    
 
     // 2️⃣ PUT: hook preparado pero manual (autoFetch = false)
     const { fetchData: actualizar, datos: actualizado, error } = useApi(
@@ -47,9 +50,12 @@ const Editar = () => {
                 body: formData
             });
         }
+
+        // Paso 3: Redirijo hacia la pagina de detalles del articulo        
+        navigate('/articulo/' + respuestaEdicion.articuloActualizado._id);
     };
 
-    if (cargando) return <h3 className="jumbo">Cargando artículo...</h3>;    
+    if (cargando) return <h3 className="jumbo">Cargando artículo...</h3>;
 
     // Renderizo
     return (
@@ -93,7 +99,15 @@ const Editar = () => {
                     <input type="file" name="file0" id="file" />
                 </div>
 
-                <input type="submit" value="Guardar" className="btn btn-success" />
+                {/* Botones */}
+                <div className="botones-articulos">
+                    <input type="submit" value="Guardar" className="edit" />
+                    <Link to="/articulos">
+                        <button className="back">Volver</button>
+                    </Link>                    
+                </div>
+
+                
             </form>
 
             <div className="mensajes-de-estado">

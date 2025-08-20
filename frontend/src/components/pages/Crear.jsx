@@ -5,9 +5,14 @@
 
 import { useApi } from "../../hooks/useApi";
 import { Global } from "../../helpers/Global";
+import { Link, useNavigate } from "react-router-dom";
+
 
 // Componente
 const Crear = () => {
+
+    // Creo mi cte para redirigir
+    const navigate = useNavigate();
 
     // Uso el hook para preparar la petición POST pero sin ejecutarla todavía
     const { fetchData, datos, cargando, error } = useApi(
@@ -44,6 +49,9 @@ const Crear = () => {
                 await fetchData(Global.url + 'subir-imagen/' + respuestaCreacion.articulo._id, formData, 'POST');
             }
         }
+
+        // Paso 3: Redirijo hacia la pagina de detalles del articulo        
+        navigate('/articulo/'+respuestaCreacion.articulo._id);
     };
 
 
@@ -69,7 +77,13 @@ const Crear = () => {
                     <input type="file" name="file0" id="file" />
                 </div>
 
-                <input type="submit" value="Guardar" className="btn btn-success" />
+                {/* Botones */}
+                <div className="botones-articulos">
+                    <input type="submit" value="Guardar" className="edit" />
+                    <Link to="/articulos">
+                        <button className="back">Volver</button>
+                    </Link>
+                </div>
 
             </form>
 

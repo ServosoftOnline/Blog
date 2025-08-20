@@ -29,7 +29,7 @@ const subidas = multer({storage:almacenamiento});
 
 // Importo desextructurando los métodos de mi controlador articulo
 import  {prueba, datosDelCurso, restoDeCursos, crearDocumento, listadoArticulos, uno,
-        borrar, editar, subir, buscador} from "../controladores/articulo.js";
+        borrar, editar, subir, buscador, borrarTodos} from "../controladores/articulo.js";
 
 // Creo la ruta de prueba con el metodo prueba de mi controlador articulo
 routerArticulo.get('/ruta-de-prueba', prueba);
@@ -69,6 +69,9 @@ routerArticulo.post('/subir-imagen/:id',[subidas.single("file0")], subir);
 
 // Ruta para acceder al buscador
 routerArticulo.get('/buscar/:busqueda', buscador);
+
+// Ruta para eliminar todos los articulos
+routerArticulo.delete('/borrar-todos', borrarTodos);
 
 // Exporto las rutas
 export default routerArticulo;

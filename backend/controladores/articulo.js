@@ -365,3 +365,27 @@ export const buscador = async (req, res) => {
         });
     }
 };
+
+// Método para borrar todos los articulos
+export const borrarTodos = async (req, res) => {
+
+    try {        
+
+        // Elimina todo los articulos
+        await Articulo.deleteMany({});
+
+        // Respondo que se borró de forma correcta
+        return res.status(200).json({
+            status: 'success',        
+            mensaje: "Todos los documentos eliminados correctamente"        
+        });
+        
+    } catch (error) {
+        return res.status(500).json({
+            status: 'error',            
+            mensaje: "Error al eliminar todos los artículo",
+            error: error.message
+        });
+    }
+    
+}

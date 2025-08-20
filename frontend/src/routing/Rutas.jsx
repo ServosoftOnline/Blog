@@ -12,6 +12,8 @@ import Crear from './../components/pages/Crear';
 import Contacto from '../components/pages/Contacto';
 import Busqueda from '../components/pages/Busqueda';
 import Editar from '../components/pages/Editar';
+import Eliminar from '../components/pages/Eliminar';
+import Iniciar from '../components/pages/Iniciar';
 import { Sidebar } from '../components/layout/Sidebar';
 
 export const Rutas = () => {
@@ -34,7 +36,11 @@ export const Rutas = () => {
                 <Route path='/contacto'         element={<Contacto />} />
                 <Route path='/buscar/:busqueda' element={<Busqueda />} />
                 <Route path='/articulo/:id'     element={<Articulo />} />
-                <Route path='/editar/:id'     element={<Editar />} />
+                <Route path='/editar/:id'       element={<Editar />} />
+                <Route path='/eliminar/:id'     element={<Eliminar />} />
+                <Route path='/borrar-todos/'    element={<Iniciar />} />
+
+                {/* routerArticulo.delete('/borrar-todos', borrarTodos); */}
 
                 {/* Ruta 404 */}
                 <Route path='*' element={

@@ -14,16 +14,7 @@ import { fechaFormateada, tiempoRelativo } from '../../helpers/Fechas';
 import { Link } from 'react-router-dom';
 
 
-export const Listado = ({datos, fetchData}) => {
-
-    // Funcion para que elimina un articulo
-    const eliminar = async (id) => {
-        const urlDelete = Global.url + 'articulo/' + id;
-        await fetchData(urlDelete, null, 'DELETE');
-    
-        // Una vez eliminado, recargo los artículos para que se actualice la lista
-        await fetchData(Global.url + "listar?orden=desc", null, 'GET');
-    };
+export const Listado = ({datos, fetchData}) => {    
 
      // Evita errores cuando datos está vacío o indefinido. Si datos es null o undefined, no intenta acceder a .articulos
     const articulos = datos?.articulos || [];  
@@ -38,7 +29,9 @@ export const Listado = ({datos, fetchData}) => {
                         <article className="articulo-item" key={articulo._id}>
 
                             <div className="imagen-articulo">
-                                <img src={Images.url + articulo.imagen} alt="Imagen" />
+                                <Link to={"/articulo/"+articulo._id}>
+                                    <img src={Images.url + articulo.imagen} alt="Imagen" />
+                                </Link>                                 
                             </div>
 
                             <div className="datos">
@@ -65,7 +58,7 @@ export const Listado = ({datos, fetchData}) => {
 
                                 <div className='botones-articulos'>
                                     <Link to={"/editar/" + articulo._id} className="edit">Editar</Link>                                   
-                                    <button className="delete" onClick={() => {eliminar(articulo._id)}}>Borrar</button>
+                                    <Link to={"/eliminar/" + articulo._id} className="delete">Borrar</Link>                                     
                                 </div>
                             
                             </div>

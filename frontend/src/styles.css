@@ -104,6 +104,12 @@ h1, h2, h3, p {
   }
 }
 
+.Bienvenida {
+  display:flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
 /* ESTILOS PARA LOS MENSAJES DE ESTADO */
 
 .mensajes-de-estado {
@@ -165,21 +171,27 @@ h1, h2, h3, p {
   box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
+
 .imagen-articulo {
   flex-shrink: 0;
   width: 200px;
   height: 200px;
   overflow: hidden;
-  padding: 15px;
+  display: flex;               /* centra la imagen */
+  align-items: center;         /* centra verticalmente */
+  justify-content: center;     /* centra horizontalmente */
   margin-top: 15px;
+  padding: 0;                  /* eliminamos padding */
 }
 
 .imagen-articulo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s;
+  object-fit: cover;           /* llena el contenedor */
+  object-position: center;     /* centra el contenido de la imagen */
+  display: block;              /* elimina espacios indeseados */
   border-radius: 12px;
+  transition: transform 0.4s;
 }
 
 .articulo-item:hover .imagen-articulo img {
@@ -233,11 +245,26 @@ h1, h2, h3, p {
   }
 }
 
+/* Detallles de los articulos */
+
+.articulo-detalle h2{
+  text-align: center;
+}
+
+.articulo-detalle .contenido{
+  margin-bottom: 25px;
+}
+
+.articulo-detalle .eliminar-receta {
+  margin-left: 20px;
+  color: var(--rojoFuerte);  
+}
+
 /* Detalles de un articulo y su imagen en grande */
 .articulo-detalle .imagen-articulo.grande {
   width: 100%;
-  height: 300px;
-  margin-bottom: 20px;
+  height: auto;
+  max-height: 700px;  
   border-radius: 8px;
   overflow: hidden;
 }
@@ -252,12 +279,14 @@ h1, h2, h3, p {
 /* Botones dentro de artículo */
 .botones-articulos {
   display: flex;
+  align-items: center;
   gap: 12px;
 }
 
 /* ===== Botones artículos estilo 'button', más pequeños ===== */
 .botones-articulos .edit,
-.botones-articulos .delete {
+.botones-articulos .delete,
+.botones-articulos .back {
   display: inline-block;
   padding: 8px 18px;           /* un poco más pequeños que .button */
   font-size: 1rem;             /* ligeramente más pequeño */
@@ -283,13 +312,25 @@ h1, h2, h3, p {
 
 /* Borrar */
 .botones-articulos .delete {
-  background: var(--rojoSuave);
+  background: var(--rojoSuave); 
 }
 
 .botones-articulos .delete:hover {
-  background: #990000;
+  background: var(--rojoFuerte);
   transform: scale(1.05);
 }
+
+/* Volver */
+.botones-articulos .back {
+  background: var(--naranjaQuemado);
+}
+
+.botones-articulos .back:hover {
+  background: var(--marron);
+  transform: scale(1.05);
+}
+
+
 
 /* ESTILOS PARA EL FORMULARIO DE CREAR Y EDITAR ARTICULOS */
 .formulario {
@@ -337,7 +378,7 @@ h1, h2, h3, p {
 }
 
 .formulario .btn-success {
-  background: var(--verdeClaro);
+  background: var(--naranjaQuemado);
   color: var(--blanco);
   padding: 12px;
   border: none;
@@ -350,7 +391,7 @@ h1, h2, h3, p {
 }
 
 .formulario .btn-success:hover {
-  background: var(--verdeOliva);
+  background: var(--marron);
   
 }
 

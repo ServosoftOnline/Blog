@@ -47,7 +47,7 @@ const ArticuloSchema = Schema({
 
     imagen: {
         type: String,
-        default: "default.jpeg"
+        default: "default.png"
     }
 
 });
