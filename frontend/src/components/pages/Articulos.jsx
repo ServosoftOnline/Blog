@@ -17,7 +17,7 @@ const Articulos = () => {
     const url = Global.url + "listar?orden=desc";
 
     // Extraigo datos y cargando del custom hook useAjax. Le paso la url y el método
-    const { datos, cargando, error, fetchData } = useApi(url, 'GET');
+    const { datos, cargando, error } = useApi(url, 'GET');
 
     // Si estubiera cargando devuelvo el mensaje
     if (cargando) {
@@ -29,7 +29,7 @@ const Articulos = () => {
 
     // Renderizo el listado de los encontrados
     return (
-        <Listado datos={datos} fetchData={fetchData}/>            
+        <Listado datos={datos}/>            
     );
 }
 

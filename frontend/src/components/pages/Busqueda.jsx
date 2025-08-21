@@ -17,7 +17,7 @@ const Busqueda = () => {
     const url = Global.url + "buscar/" + busqueda;    
 
     // Extraigo datos y cargando y errores posibles desde el custom hook useAjax
-    const { datos, cargando, error, fetchData } = useApi(url, 'GET');
+    const { datos, cargando, error } = useApi(url, 'GET');
 
     // Si estubiera cargando devuelvo el mensaje
     if (cargando) {
@@ -29,7 +29,7 @@ const Busqueda = () => {
 
     // Renderizo lo que busco y el listado con los resultados
     return (                 
-        <Listado datos={datos} fetchData={fetchData}/>
+        <Listado datos={datos}/>
     );
 }
  

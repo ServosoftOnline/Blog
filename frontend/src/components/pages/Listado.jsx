@@ -14,7 +14,7 @@ import { fechaFormateada, tiempoRelativo } from '../../helpers/Fechas';
 import { Link } from 'react-router-dom';
 
 
-export const Listado = ({datos, fetchData}) => {    
+export const Listado = ({datos}) => {    
 
      // Evita errores cuando datos está vacío o indefinido. Si datos es null o undefined, no intenta acceder a .articulos
     const articulos = datos?.articulos || [];  

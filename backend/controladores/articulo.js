@@ -18,14 +18,23 @@
             - Obtiene un solo articulo pasando un id de forma obligatoria
             - Borrar un articulo pasando un id de forma obligatoria
             - Editar un articulo pasando un id de forma obligatoria
+            - Sube las imagenes al backend
+            - Buscador de artículos
+            - Inicia la bbdd, borrando todos los documentos de la colección y elimina las imagenes del backend y deja las necesarias
 
 */
 
 import Articulo from "../modelos/Articulo.js";
 import validar from "../helpers/validar.js";
 import { unlink } from 'fs/promises';
+
+import fs from "fs";
 import path from "path";
-import fs from 'fs';
+import { fileURLToPath } from "url";
+
+// Necesitamos __dirname equivalente en ESModules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 
@@ -366,26 +375,42 @@ export const buscador = async (req, res) => {
     }
 };
 
-// Método para borrar todos los articulos
+
+// Método para borrar todos los articulos y elimina las imagenes del backend. Las cuales empiezan por "articulo"
 export const borrarTodos = async (req, res) => {
 
     try {        
 
-        // Elimina todo los articulos
+        // Paso 1: Eliminar todos los articulos en MongoDB
         await Articulo.deleteMany({});
 
-        // Respondo que se borró de forma correcta
+        // Paso 2: Eliminar los archivos de la carpeta backend/imagenes/articulos que empiecen por "articulo"
+        const dirPath = path.join(__dirname, "../imagenes/articulos");
+
+        // Leer los ficheros de la carpeta
+        const files = await fs.promises.readdir(dirPath);
+
+        for (const file of files) {
+            if (file.startsWith("articulo")) {
+                try {
+                    await fs.promises.unlink(path.join(dirPath, file));
+                } catch (err) {
+                    console.error(`Error al borrar ${file}:`, err.message);
+                }
+            }
+        }
+
+        // Paso 3: Responder al cliente
         return res.status(200).json({
-            status: 'success',        
-            mensaje: "Todos los documentos eliminados correctamente"        
+            status: "success",
+            mensaje: "Todos los documentos e imágenes eliminados correctamente"
         });
-        
+
     } catch (error) {
         return res.status(500).json({
-            status: 'error',            
-            mensaje: "Error al eliminar todos los artículo",
+            status: "error",
+            mensaje: "Error al eliminar todos los artículos",
             error: error.message
         });
     }
-    
-}
+};

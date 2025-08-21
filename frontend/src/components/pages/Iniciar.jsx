@@ -1,16 +1,19 @@
 /*
     COMPONENTE PARA INICIALIZAR LA BBDD
+
         - Eliminara todos los articulos y creará unos por defecto
         - Cuando finalize el blog y pueda añadir jwt este componente ya no lo usaré
 */
 
 import { useApi } from "../../hooks/useApi";
 import { Global } from "../../helpers/Global";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 // Componente
 const Iniciar = () => {   
+
+    const navigate = useNavigate();
 
     // Petición DELETE para eliminar los documentos de la colección para ejecutarla mas tarde. (autoFetch = false)
     const { fetchData: eliminarColeccion} = useApi(
@@ -68,11 +71,24 @@ const Iniciar = () => {
         // Paso 1: Eliminar los documentos existentes        
         await eliminarColeccion(`${Global.url}borrar-todos`, null, "DELETE");
 
-        // Paso 2: Insertar cada receta por separado
+        // Paso 2: Eliminar de la carpeta articulos todos los articulos que empiezan por el caracter "articulo"
+
+        // Paso 3: Insertar cada receta por separado
         for (let articulo of nuevosArticulos) {
             await crearColeccion(Global.url + 'crear', articulo, 'POST');
-        }
+        }        
     };
+
+    // Cuando se hallan devuelto los datos indicando que acabó el proceso correctamente. Espera 3 segundos y redirige a articulos
+    useEffect(() => {
+        if (datos) {
+            const timer = setTimeout(() => {
+                navigate("/articulos");
+            }, 3000); 
+
+            return () => clearTimeout(timer); // limpieza si se desmonta antes
+        }
+    }, [datos, navigate]);
 
 
     // Renderizo
