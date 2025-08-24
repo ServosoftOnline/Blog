@@ -1,5 +1,8 @@
 /* CONEXION CON LA BBDD Y SERVIDOR MEDIANTE EXPRESS */
 
+// Carga las variables de entorno
+import 'dotenv/config';
+
 // Importo la conexion
 import { conexion } from "./basedatos/conexion.js";
 
@@ -15,7 +18,7 @@ conexion();
 
 // Creo el servidor y establezco el puerto
 const app = express();
-const puerto = 3900;
+const puerto = process.env.PORT || 3900;
 
 // middleware de cors
 app.use(cors());

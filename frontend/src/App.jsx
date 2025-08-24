@@ -3,6 +3,8 @@ import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
 import { Rutas } from './routing/Rutas';
 
+
+
 // Componente
 const App = () => {  
   return (

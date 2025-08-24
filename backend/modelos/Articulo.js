@@ -47,8 +47,15 @@ const ArticuloSchema = Schema({
 
     imagen: {
         type: String,
-        default: "default.png"
+        default: "https://res.cloudinary.com/dsreafpsw/image/upload/v1755943447/blog_culinario_iniciales/maszzez2airbp9enpgke.png"
+        // default: "default.png"        
+    },
+
+    public_id_imagen: {
+        type: String,
+        default: "blog_culinario_iniciales/maszzez2airbp9enpgke"
     }
+
 
 });
 

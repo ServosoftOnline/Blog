@@ -29,7 +29,8 @@ const subidas = multer({storage:almacenamiento});
 
 // Importo desextructurando los métodos de mi controlador articulo
 import  {prueba, datosDelCurso, restoDeCursos, crearDocumento, listadoArticulos, uno,
-        borrar, editar, subir, buscador, borrarTodos} from "../controladores/articulo.js";
+        borrar, editar, subir, subirImagenCloudinary, subirImagenInicialCloudinary, borrarImagenCloudinary, buscador,
+        borrarTodosLocal, borrarTodosCloudinary} from "../controladores/articulo.js";
 
 // Creo la ruta de prueba con el metodo prueba de mi controlador articulo
 routerArticulo.get('/ruta-de-prueba', prueba);
@@ -64,14 +65,26 @@ routerArticulo.delete('/articulo/:id', borrar);
 // Ruta para editar un articulo
 routerArticulo.put('/articulo/:id', editar);
 
-// Ruta para subir una imagen aplicando el middleware multer
+// Ruta para subir una imagen local aplicando el middleware multer
 routerArticulo.post('/subir-imagen/:id',[subidas.single("file0")], subir);
+
+// Ruta para subir una imagen a cloudinary
+routerArticulo.post("/subir-imagen-cloudinary", subidas.single('file0'), subirImagenCloudinary);
+
+// Ruta para subir una imagen inicial a cloudinary
+routerArticulo.post("/subir-imagen-cloudinary-inicial", subidas.single('imagen'), subirImagenInicialCloudinary);
+
+// Ruta para borrar una imagen de cloudinary
+routerArticulo.delete("/borrar-imagen-cloudinary", borrarImagenCloudinary);
 
 // Ruta para acceder al buscador
 routerArticulo.get('/buscar/:busqueda', buscador);
 
-// Ruta para eliminar todos los articulos
-routerArticulo.delete('/borrar-todos', borrarTodos);
+// Ruta para eliminar todos los articulos en fase de desarrollo
+routerArticulo.delete('/borrar-todos', borrarTodosLocal); 
+
+// Ruta para eliminar todos los articulos en fase de producción
+routerArticulo.delete('/borrar-todos-cloudinary', borrarTodosCloudinary); 
 
 // Exporto las rutas
 export default routerArticulo;

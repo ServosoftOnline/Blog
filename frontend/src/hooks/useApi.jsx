@@ -56,7 +56,7 @@
             
 */
 
-// useApi.jsx
+
 import { useState, useEffect, useCallback } from 'react';
 
 export const useApi = (url, metodo = 'GET', body = null, autoFetch = true) => {

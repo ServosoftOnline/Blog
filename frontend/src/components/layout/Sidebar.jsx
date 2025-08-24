@@ -1,35 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Busqueda from '../pages/Busqueda';
 import { Global } from '../../helpers/Global';
 
 // Componente
 export const Sidebar = () => {
+  
+    // Estado para guardar el valor del input y la cte para navegar
+    const [busqueda, setBusqueda] = useState('');
+    const navigate = useNavigate();
 
-  // Constante para la navegacion
-  const navigate = useNavigate();
+    // Función que maneja el envío del formulario
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-  // Funcion que recoge la información del formulario del buscador
-  const handleSubmit = (e) => {
-    e.preventDefault();    
-    const query = e.target.find.value;
-    navigate(`/buscar/${query}`)
-  }
+        // Redirige a la página de resultados de la búsqueda
+        navigate(`/buscar/${busqueda}`);
+        
+        // Limpia el input después de enviar el formulario
+        setBusqueda('');
+    };
 
-  // Renderizo
-  return (
-    <aside className="lateral">
-      <div className="search">
+    // Función para manejar el cambio en el input
+    const handleChange = (e) => {
+        setBusqueda(e.target.value);
+    };
 
-        <h3 className="title">Buscador</h3>
+    return (
+        <aside className="lateral">
+            <div className="search">
 
-        {/* Formulario */}
-        <form onSubmit={handleSubmit}>
-            <input type="text" id="search_field" name='find' autoComplete='off'/>
-            <input type='submit' id='search' value="Buscar" />            
-        </form>
+                <h3 className="title">Buscador</h3>
 
-      </div>
-    </aside>
-  )
-}
+                {/* Formulario */}
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        id="search_field"
+                        name='find'
+                        autoComplete='off'                
+                        value={busqueda}                        
+                        onChange={handleChange}
+                    />
+                    <input type='submit' id='search' value="Buscar" />
+                </form>
+
+            </div>
+        </aside>
+    );
+};

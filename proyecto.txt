@@ -43,11 +43,34 @@
             - como herramienta gráfica para trabajar con la bbdd
             - crear la bbdd, colecciones
 
+        - dotenv
+            - Para poder acceder a las variables de entorno            
+            - npm install dotenv
+            - Debo cargar las variables de entorno al principio mi mi archivo ppal del backend. En mi caso en index.js
+                - import 'dotenv/config';
+
+        - Cloudinary
+            - Para poder crear un servidor de imagenes en el proceso de producción
+            - npm i cloudinary
+            - Añadir los datos privados que me proporciona a las vbles de entorno del backend
+            - Crear un controlador con todos los métodos que me ha proporcionado
+
+        - sharp
+            - Permite poder redimensionar imagenes, muy util para subir imagenes desde el backend con tamaños adecuados
+            - npm install sharp
+
+
+
     - Para el front
         - react router dom
             - Para hacer las rutas del front
             - npm install react-router-dom
-    
+
+        - polyfills
+            - Pluggin para poder acceder a las variables de entorno en el front
+            - Es necesario:
+                - Instalar el paquete mediante: npm install vite-plugin-node-polyfills --save-dev
+                - Importarlo y añadirlo a los plugins de tu archivo vite.config.js.
 
 - Sigue el modelo vista controlador:
 
@@ -93,6 +116,9 @@
 
         3- Crear las rutas del front
         4. Desarrollar la plantilla rellenando los layout
-        5.- Crear un hook personalizado para que realize las operaciones con la bbdd. En este proyecto la llame useApi.jsx
-        5. Desarrollar cada uno de los componentes para que realicen su funcion
+        5. Crear un hook personalizado para que realize las operaciones con la bbdd. En este proyecto la llame useApi.jsx
+        6. Desarrollar cada uno de los componentes para que realicen su funcion
+        7. Acabar con la fase de desarrollo
+        8. Pasar a la fase de producción.
+
         

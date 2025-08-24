@@ -51,7 +51,7 @@ const Eliminar = () => {
 
             {/* Imagen */}
             <div className="imagen-articulo grande">
-                <img src={Images.url + datos.consulta.imagen} alt={datos.consulta.titulo} />
+                <img src={datos.consulta.imagen} alt={datos.consulta.titulo} />
             </div>
 
             {/* Datos */}

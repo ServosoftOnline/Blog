@@ -13,7 +13,7 @@ const Inicio = () => {
             {/* Botones */}
             <div className='botones-articulos'>
                 <Link to='/articulos'       className='edit'>Ir a recetas</Link>
-                <Link to='/borrar-todos'    className='delete'>Ir a Iniciar la base de datos</Link>
+                <Link to='/borrar-todos'    className='delete'>Reiniciar base de datos</Link>
             </div>
 
         </div>

@@ -41,7 +41,8 @@ const Articulo = () => {
             <h2>{datos.consulta.titulo}</h2>
             {/* Imagen */}
             <div className="imagen-articulo grande">
-                <img src={Images.url + datos.consulta.imagen} alt={datos.consulta.titulo} />
+                {/* <img src={Images.url + datos.consulta.imagen} alt={datos.consulta.titulo} /> */}
+                <img src={datos.consulta.imagen} alt={datos.consulta.titulo} />
             </div>
 
             {/* Datos */}

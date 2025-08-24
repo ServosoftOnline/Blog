@@ -1,12 +1,11 @@
 /*
-    COMPONENTE PARA CREAR UN NUEVO ARTICULO
-        - Uso el hook useForm para serializar los datos del formulario
+    COMPONENTE PARA CREAR UN NUEVO ARTICULO        
 */
 
 import { useApi } from "../../hooks/useApi";
 import { Global } from "../../helpers/Global";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useImageCompressor } from "../../hooks/useImageCompressor";
 
 // Componente
 const Crear = () => {
@@ -21,12 +20,15 @@ const Crear = () => {
         null,                 // Body se pasará manualmente con los datos del nuevo formulario
         false                 // No ejecutar automáticamente
     );
+
+    // Uso el nuevo custom hook para comprimir imágenes
+    const { comprimirImagen } = useImageCompressor();
     
     // Funcion que recoge los datos del formulario, los almacena en la bbdd y sube la imagen
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const nuevoArticulo = {
+        let nuevoArticulo = {
             titulo: e.target.titulo.value,
             contenido: e.target.contenido.value
         };
@@ -42,11 +44,25 @@ const Crear = () => {
 
             // Solo si tengo un fileInput subo la imagen
             if (fileInput?.files[0]) {
+                
+                // Comprimo la imagen antes de subirla
+                const compressedFile = await comprimirImagen(fileInput.files[0]);
 
                 // Creo y añado la información al formdata
                 const formData = new FormData();
-                formData.append('file0', fileInput.files[0]);
-                await fetchData(Global.url + 'subir-imagen/' + respuestaCreacion.articulo._id, formData, 'POST');
+                formData.append('file0', compressedFile);
+                const respuestaSubida = await fetchData(Global.url + 'subir-imagen-cloudinary/', formData, 'POST');                     
+               
+                // Modifico el objeto nuevoArticulo con el link de la imagen devuelto en la subida
+                nuevoArticulo = {
+                    titulo: e.target.titulo.value,
+                    contenido: e.target.contenido.value,
+                    imagen: respuestaSubida.url,
+                    public_id_imagen: respuestaSubida.public_id
+                }                
+                
+                // Edito el articulo modificando con la url de la imagen subida
+                await fetchData(`${Global.url}articulo/${respuestaCreacion.articulo._id}`, nuevoArticulo, "PUT");
             }
         }
 
