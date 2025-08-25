@@ -110,6 +110,24 @@ h1, h2, h3, p {
   margin-bottom: 20px;
 }
 
+/* Estilos para En construccion */
+
+.en-construccion {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--naranjaQuemado); /* o el color que prefieras */
+}
+
+.en-construccion i {
+  font-size: 4rem; /* Ajusta el tamaño del ícono */
+  margin-bottom: 18px;
+}
+
 /* ESTILOS PARA LOS MENSAJES DE ESTADO */
 
 .mensajes-de-estado {

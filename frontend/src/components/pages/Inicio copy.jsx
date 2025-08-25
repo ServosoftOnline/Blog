@@ -5,16 +5,8 @@ const Inicio = () => {
     return (
         <div>
             <div className='Bienvenida'>
-                <h2>Bienvenido al blog culinario</h2>                
+                <h2>Bienvenido al blog culinario</h2>
                 <p>Blog desarrollado con el Stack MERN (MongoDb, Express, React y Nodejs)</p>
-            </div>
-            
-            {/* Mensaje de "En Construcción" */}
-            <div className='en-construccion'>
-                <i className="fa-solid fa-cogs"></i>
-                <p>
-                    El blog se encuentra aún en construcción
-                </p>
             </div>
             
 
