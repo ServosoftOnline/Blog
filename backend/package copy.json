@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "nodemon index.js",
-  "start": "node index.js",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
