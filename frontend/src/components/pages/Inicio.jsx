@@ -1,9 +1,15 @@
 import {Link} from 'react-router-dom';
+import './../../styles/pages/inicio.css';
+import anchoDePantalla from './../../helpers/anchoDePantalla';
 
 // Componente
 const Inicio = () => {
+
+    const {anchoActual} = anchoDePantalla();   
+
     return (
         <div>
+            <h3>{anchoActual}</h3>
             <div className='Bienvenida'>
                 <h2>Bienvenido al blog culinario</h2>                
                 <p>Blog desarrollado con el Stack MERN (MongoDb, Express, React y Nodejs)</p>

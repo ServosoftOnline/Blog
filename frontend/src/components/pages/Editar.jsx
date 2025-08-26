@@ -9,6 +9,7 @@ import { Global } from "../../helpers/Global";
 import { useParams} from 'react-router-dom';
 import { Link, useNavigate } from "react-router-dom";
 import { useImageCompressor } from "../../hooks/useImageCompressor";
+import './../../styles/pages/editar.css';
 
 // Componente
 const Editar = () => {
@@ -163,6 +164,7 @@ const Editar = () => {
                 {error && <h3 className="mensaje-error">{error}</h3>}
                 {actualizado && (<h3 className="mensaje-exito">{actualizado.mensaje}</h3>)}
             </div>
+
         </div>
     );
 };

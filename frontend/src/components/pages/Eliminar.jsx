@@ -1,12 +1,11 @@
 // COMPONENTE QUE MUESTRA LA PANTALLA ANTES DE CONFIRMAR LA ELIMINACIÓN DE UN ARTICULO
 
 import { Global } from '../../helpers/Global';
-import { Images } from '../../helpers/Images';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import './../../styles/pages/eliminar.css';
 import { fechaFormateada, tiempoRelativo } from '../../helpers/Fechas';
 import { useApi } from '../../hooks/useApi';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 
 // Componente
 const Eliminar = () => {

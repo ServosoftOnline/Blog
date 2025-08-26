@@ -1,0 +1,33 @@
+/* ===== Navegación ===== */
+.nav {
+  grid-area: nav;
+  background: var(--verdeOliva);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.nav li {
+  margin: 0 20px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 1.2rem; /* fuente más grande */
+  font-weight: 600;
+  color: var(--blanco);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.nav a:hover {
+  transform: scale(1.2); /* solo agranda fuente */
+}

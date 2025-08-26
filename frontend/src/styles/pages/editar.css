@@ -1,0 +1,44 @@
+/* ESTILOS PARA EL FORMULARIO DE EDITAR ARTICULOS */
+.formulario {
+  width: 100%;
+  max-width: 90%; 
+  background: var(--blanco);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+}
+
+.formulario .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  text-align: left;  
+}
+
+.formulario label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.formulario input[type="text"],
+.formulario textarea,
+.formulario input[type="file"] {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: var(--blanco);
+  font-size: 14px;
+}
+
+.formulario textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formulario input[type="text"]:focus,
+.formulario textarea:focus,
+.formulario input[type="file"]:focus {
+  border-color: var(--verdeClaro);
+  outline: none;
+}

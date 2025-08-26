@@ -1,19 +1,17 @@
 // COMPONENTE QUE MUESTRA UN SOLO ARTICULO
 
 import { Global } from '../../helpers/Global';
-import { Images } from '../../helpers/Images';
 import { fechaFormateada, tiempoRelativo } from '../../helpers/Fechas';
 import { useApi } from '../../hooks/useApi';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 
 // Componente
 const Articulo = () => {
 
-    // Obtengo el id pasado por parámetro y creo mi cte para navegar
-    const {id} = useParams();
-    const navigate= useNavigate();
+    // Obtengo el id pasado por parámetro
+    const {id} = useParams();    
 
     // Creo la url usando mi helper Global.jsx
     const url = Global.url + "articulo/" + id;
@@ -39,9 +37,9 @@ const Articulo = () => {
         <article className="articulo-detalle">
 
             <h2>{datos.consulta.titulo}</h2>
+
             {/* Imagen */}
-            <div className="imagen-articulo grande">
-                {/* <img src={Images.url + datos.consulta.imagen} alt={datos.consulta.titulo} /> */}
+            <div className="imagen-articulo grande">               
                 <img src={datos.consulta.imagen} alt={datos.consulta.titulo} />
             </div>
 
@@ -63,10 +61,10 @@ const Articulo = () => {
                     </p> 
 
                 </div>
-
                                  
                 
-                <p className='contenido'>{datos.consulta.contenido}</p>                              
+                {/* <p className='contenido'>{datos.consulta.contenido}</p>                               */}
+                <p>{datos.consulta.contenido}</p>                              
 
                 {/* Botones */}
                 <div className="botones-articulos">

@@ -10,6 +10,7 @@
 import React from 'react';
 import { fechaFormateada, tiempoRelativo } from '../../helpers/Fechas';
 import { Link } from 'react-router-dom';
+import './../../styles/pages/listado.css';
 
 // Componente
 export const Listado = ({datos}) => {    

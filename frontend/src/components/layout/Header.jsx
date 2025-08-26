@@ -1,11 +1,10 @@
 import React from 'react'
+import './../../styles/layout/header.css'
 
 export const Header = () => {
   return (
     <header className="header">
-        <div className="logo">🍴
-           
-        </div>        
+        <div>🍴</div>        
         <h1>Blog culinario</h1>
     </header>
   )

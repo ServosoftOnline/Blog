@@ -1,0 +1,63 @@
+.articulo-detalle h2{
+    text-align: center;
+}
+
+.articulo-detalle .contenido{
+    margin-bottom: 25px;
+}
+
+/* Detalles de un articulo y su imagen en grande */
+.articulo-detalle .imagen-articulo.grande {
+    width: 100%;
+    height: auto;
+    max-height: 700px;  
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Datos */
+
+.articulo-detalle .datos {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.articulo-detalle .datos h3 {
+    margin: 0;               
+    line-height: 1.2;        
+}
+
+.articulo-detalle .datos h3 a {
+    display: inline;          /* evita que cada línea se comporte como bloque */
+    color: var(--verdeOliva); 
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+    font-weight: 700;  
+}
+
+.articulo-detalle .datos h3 a:hover {
+    transform: scale(1.1); /* solo aumenta tamaño al pasar el mouse */
+    color: var(--verdeClaro); /* opcional: ligero cambio de tono al hover */
+}
+
+.articulo-detalle .datos .fechas {
+    display: flex;
+    flex-direction: column;  
+    margin-top: 10px;
+    margin-bottom: 15px;;
+  
+  
+    p {
+        margin:0;
+      font-weight: bolder;
+    }
+}
+
+.articulo-detalle .datos p {
+    color: var(--textoSecundario);
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}

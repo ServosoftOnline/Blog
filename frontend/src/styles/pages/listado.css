@@ -1,0 +1,90 @@
+/* ===== Artículos ===== */
+.articulo-item {
+  display: flex;
+  flex-direction: row;
+  background: var(--blanco);
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.articulo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+
+.articulo-item .imagen-articulo {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;               /* centra la imagen */
+  align-items: center;         /* centra verticalmente */
+  justify-content: center;     /* centra horizontalmente */
+  margin-top: 15px;  
+  padding: 10px;                  
+}
+
+.articulo-item .imagen-articulo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* llena el contenedor */
+  object-position: center;     /* centra el contenido de la imagen */
+  display: block;              /* elimina espacios indeseados */
+  border-radius: 12px;
+  transition: transform 0.4s;
+}
+
+.articulo-item:hover .imagen-articulo img {
+  transform: scale(1.05);
+}
+
+/* ===== Títulos de artículos como links ===== */
+
+.articulo-item .datos {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.articulo-item .datos h3 {
+  margin: 0;               /* elimina margen por defecto */
+  line-height: 1.2;        /* ajusta la altura de línea para que las líneas estén más juntas */
+}
+
+.articulo-item .datos h3 a {
+  display: inline;          /* evita que cada línea se comporte como bloque */
+  color: var(--verdeOliva); 
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
+  font-weight: 700;  
+}
+
+.articulo-item .datos h3 a:hover {
+  transform: scale(1.1); /* solo aumenta tamaño al pasar el mouse */
+  color: var(--verdeClaro); /* opcional: ligero cambio de tono al hover */
+}
+
+.articulo-item .datos p {
+  color: var(--textoSecundario);
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.articulo-item .datos .fechas {
+  display: flex;
+  flex-direction: column;  
+  margin-top: 10px;
+  margin-bottom: 15px;;
+  
+  
+  p {
+    margin:0;
+    font-weight: bolder;
+  }
+}

@@ -1,6 +1,8 @@
 /* COMPONENTE DE CONTACTO */
 import React from "react";
+import './../../styles/pages/contacto.css'
 
+// Componente
 const Contacto = () => {
   return (
     <section className="contacto">      

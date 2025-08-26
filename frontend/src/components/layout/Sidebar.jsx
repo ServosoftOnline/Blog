@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import Busqueda from '../pages/Busqueda';
-import { Global } from '../../helpers/Global';
+import './../../styles/layout/sidebar.css';
 
 // Componente
 export const Sidebar = () => {
