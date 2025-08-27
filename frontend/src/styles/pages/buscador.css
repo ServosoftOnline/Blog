@@ -1,0 +1,64 @@
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
+/* Estilos del buscador dentro de la barra de navegación */
+.search-nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-nav-container form {
+    display: flex;
+    align-items: center;
+    position: relative; /* Posiciona la lupa dentro del input */
+}
+
+.search-nav-container input[type="text"] {
+    width: auto;
+    padding: 8px 12px;
+    padding-right: 40px; /* Asegura espacio para la lupa */
+    border-radius: 20px;
+    border: 1px solid var(--blanco);
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */    
+    color: var(--blanco);
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.search-nav-container input[type="text"]::placeholder {
+    color: var(--blanco); /* Usamos el blanco con opacidad */
+    opacity: 0.7;
+}
+
+.search-nav-container input[type="text"]:focus {
+    background-color: var(--blanco);
+    color: var(--verdeOliva); /* Usamos el color corporativo para el texto */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Estilos para el botón de la lupa */
+.search-nav-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute; /* Superpone el botón en el input */
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+}
+
+.search-nav-container .search-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--blanco);
+    transition: color 0.3s;
+}
+
+/* Cambia el color del ícono cuando el input está en foco */
+.search-nav-container input[type="text"]:focus + button .search-icon {
+    color: var(--verdeOliva); 
+}

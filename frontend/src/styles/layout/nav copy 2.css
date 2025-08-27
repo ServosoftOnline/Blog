@@ -1,8 +1,3 @@
-/* ===== Puntos de Ruptura (Breakpoints) ===== */
-/* Móviles pequeños: max-width: 576px */
-/* Móviles y tabletas (vertical): max-width: 768px */
-/* Tabletas (horizontal): max-width: 992px */
-/* Monitores: min-width: 1200px */
 
 /* ===== Estilos para Escritorio (901px o más) ===== */
 .nav {
@@ -46,6 +41,11 @@
 }
 
 /* DISEÑO RESPONSIVE */
+
+/* Tabletas (horizontal): max-width: 992px */
+@media (max-width: 992) {
+
+}
 
 
 /* Móviles pequeños: max-width: 576px */

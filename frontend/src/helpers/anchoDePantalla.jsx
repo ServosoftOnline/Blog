@@ -8,29 +8,20 @@
 
 import { useState, useEffect } from 'react';
 
-const anchoDePantalla = () => {
+const anchoDePantalla = () => {  
 
-  const resolucion = {
+  // Para programar dependiendo de la resolucion de la pantalla
+  const resolucionEnNumeros = {
 
-    monitor17Pulgadas: '1930px',   
-    monitor15Pulgadas: '1610px',   
-    
-    movilHorizontal: '820px',
-    movilVertical: '420px'    
-}
+      monitor17Pulgadas: 1930,
+      monitor15Pulgadas: 1610,
 
-// Para programar dependiendo de la resolucion de la pantalla
-const resolucionEnNumeros = {
+      movilHorizontal: 820,
+      movilVertical: 420,
 
-    monitor17Pulgadas: 1930,
-    monitor15Pulgadas: 1610,
-
-    movilHorizontal: 820,
-    movilVertical: 420,
-
-    AnchoAmplianBotones: 1930,
-    AnchoReducenBotones: 960
-}
+      AnchoAmplianBotones: 1930,
+      AnchoReducenBotones: 960
+  }
   
   // Estado para almacenar la resolución de la pantalla
   const [resolution, setResolution] = useState({

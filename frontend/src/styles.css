@@ -1,3 +1,9 @@
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
 /* TEMAS CON LOS COLORES */
 @import './theme.css';
 
@@ -15,29 +21,6 @@ h1, h2, h3, p {
   color: var(--textoPrincipal);
 }
 
-/* ===== Layout ===== */
-.layout {
-  display: grid;
-  grid-template-areas:
-    "header header header"
-    "nav nav nav"
-    "content content lateral"
-    "footer footer footer";
-  grid-template-rows: 100px 70px auto 90px;
-  grid-template-columns: 2fr 1fr;
-  min-height: 100vh;
-  gap: 10px;
-}
-
-/* ===== Contenido principal ===== */
-.content {
-  grid-area: content;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 20px;
-}
-
 /* clase común en varios componentes */
 .jumbo {
   display: flex;
@@ -52,7 +35,7 @@ h1, h2, h3, p {
   }
 }
 
-/* ESTILOS PARA LOS MENSAJES DE ESTADO */
+/* ESTILOS PARA LOS MENSAJES DE ESTADO. COMÚN EN VARIOS COMPONENTES */
 
 .mensajes-de-estado {
     margin-top: 1rem;
@@ -73,7 +56,7 @@ h1, h2, h3, p {
     font-weight: bold;
 }
 
-/* BOTONES */
+/* BOTONES COMUNES EN VARIOS COMPONENTES*/
 
 /* Botones dentro de artículo */
 .botones-articulos {
@@ -129,59 +112,3 @@ h1, h2, h3, p {
   transform: scale(1.05);
 }
 
-/* ===== Barra lateral ===== */
-.lateral {
-  grid-area: lateral;
-  background: var(--beige);
-  padding: 20px;
-  border-left: 1px solid var(--grisMedio);
-  border-radius: 12px;
-}
-
-.lateral > div {
-  background: var(--blanco);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
-}
-
-/* ===== Responsivo ===== */
-
-/* Responsivo */
-@media (max-width: 600px) {
-  .contacto-lista {
-    grid-template-columns: 1fr; /* una columna en móviles estrechos */
-  }
-  .card { padding: 18px; }
-  .card i { width: 50px; height: 50px; font-size: 1.35rem; }
-}
-
-@media (max-width: 900px) {
-  .layout {
-    grid-template-areas:
-      "header"
-      "nav"
-      "content"
-      "lateral"
-      "footer";
-    grid-template-columns: 1fr;
-  }
-
-  .articulo-item {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .articulo-item .imagen-articulo  {
-    width: 100%;
-    height: 250px;
-    border-radius: 12px 12px 0 0;    
-  }
-
-  .nav ul {
-    flex-direction: column;
-    gap: 10px;
-    height: auto;
-  }
-}

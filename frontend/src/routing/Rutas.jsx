@@ -1,8 +1,11 @@
 // RUTAS DEL FRONT
 
 import React from 'react'
-import { Routes, Route, BrowserRouter, Navigate} from "react-router-dom";
+import { Routes, Route, BrowserRouter} from "react-router-dom";
 import { Nav } from './../components/layout/Nav';
+
+// Estilos
+import './../styles/layout/rutas.css';
 
 // Componentes de las rutas
 import Inicio from "./../components/pages/Inicio";
@@ -19,8 +22,8 @@ import { Sidebar } from '../components/layout/Sidebar';
 export const Rutas = () => {
   return (
     <BrowserRouter>
-
-        {/* Barra de navegación */}        
+        
+        {/* Barra de navegación. El buscador se encuentra en el interior */}        
         <Nav/>
 
         {/* Sidebar */}
@@ -40,8 +43,6 @@ export const Rutas = () => {
                 <Route path='/eliminar/:id'     element={<Eliminar />} />
                 <Route path='/borrar-todos/'    element={<Iniciar />} />
 
-                {/* routerArticulo.delete('/borrar-todos', borrarTodos); */}
-
                 {/* Ruta 404 */}
                 <Route path='*' element={
                   <div className='jumbo'>
@@ -50,7 +51,6 @@ export const Rutas = () => {
                 } />
 
             </Routes>
-
         </section>
 
     </BrowserRouter>

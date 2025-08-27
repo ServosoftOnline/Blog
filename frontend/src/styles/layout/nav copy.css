@@ -1,0 +1,87 @@
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
+/* ===== Navegación ===== */
+.nav {
+  grid-area: nav;
+  background: var(--verdeOliva);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.nav li {
+  margin: 0 20px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 1.2rem; /* fuente más grande */
+  font-weight: 600;
+  color: var(--blanco);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.nav a:hover {
+  transform: scale(1.2); /* solo agranda fuente */
+}
+
+/* RESPONSIVE */
+
+/* ===== AJUSTES PARA DISPOSITIVOS MÁS PEQUEÑOS ===== */
+
+/* Estilos para tabletas (vertical) y móviles grandes (max-width: 768px) */
+/* La barra de navegación puede empezar a verse apretada, ajustamos el tamaño de la fuente */
+@media (max-width: 768px) {
+  .nav li {
+    margin: 0 15px; /* Reduce el margen entre los elementos */
+  }
+
+  .nav a {
+    font-size: 1.1rem; /* Reduce un poco el tamaño de la fuente */
+  }
+}
+
+
+
+/* Estilos para móviles pequeños (max-width: 576px). Navegación vertical */
+@media (max-width: 576px) {
+  .nav {
+    padding: 10px 0; /* Agrega un poco de espacio en la parte superior e inferior */
+  }
+
+  .nav ul {
+    flex-direction: column; /* Cambia la dirección a columna */
+    height: auto; /* La altura se ajusta al contenido */
+    padding: 0;
+  }
+
+  .nav li {
+    margin: 10px 0; /* Aumenta el espacio vertical entre los elementos */
+    width: 100%; /* Hace que cada elemento ocupe todo el ancho */
+    text-align: center;
+  }
+
+  .nav a {
+    display: block; /* Para que el enlace ocupe todo el ancho del li */
+    padding: 10px 0;
+    font-size: 1rem; /* Reduce aún más el tamaño de la fuente */
+  }
+
+  .nav a:hover {
+    transform: none; /* Desactivamos el efecto de escala para evitar saltos inesperados en móviles */
+    background-color: rgba(255, 255, 255, 0.1); /* Efecto hover simple */
+  }
+}

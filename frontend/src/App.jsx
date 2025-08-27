@@ -2,6 +2,7 @@
 import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
 import { Rutas } from './routing/Rutas';
+import './styles/layout/app.css';
 
 
 

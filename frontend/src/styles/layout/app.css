@@ -1,0 +1,19 @@
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
+/* ===== Layout ===== */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav nav nav"
+    "content content lateral"
+    "footer footer footer";  
+  grid-template-rows: 100px 70px auto 90px;
+  grid-template-columns: 2fr 1fr;
+  min-height: 100vh;
+  gap: 10px;  
+}

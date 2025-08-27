@@ -134,7 +134,7 @@ export const listadoArticulos = async (req, res) => {
     try {
 
         // Simular retardo de 2 segundos (2000 ms)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // await new Promise(resolve => setTimeout(resolve, 2000));
 
         // Hago la consulta de todos los articulos        
         let consulta = Articulo.find({});        
@@ -410,46 +410,6 @@ export const subirImagenCloudinary = async (req, res) => {
     });
   }
 };
-
-/*
-// Metodo para subir una imagen de prueba inicial a cloudinary. Solo la uso desde postman. No desde el front
-export const subirImagenInicialCloudinary = async (req, res) => {
-
-  try {
-
-    // Si no hay un archivo, devuelve un error
-    if (!req.file) {
-      return res.status(400).send({
-        status: "error",
-        mensaje: "No se ha proporcionado ningún archivo."
-      });
-    }
-
-    // Sube el archivo a Cloudinary
-    const resultado = await cloudinary.uploader.upload(req.file.path, {
-      folder: "blog_culinario_iniciales"
-    });
-
-    // Elimina el archivo temporal de la carpeta local
-    fs.unlinkSync(req.file.path);
-
-    // Devuelve la URL de la imagen subida
-    return res.status(200).send({
-      status: "success",
-      url: resultado.secure_url,
-      public_id: resultado.public_id
-    });
-
-  } catch (error) {
-    console.error("Error al subir la imagen inicial a Cloudinary:", error);
-    return res.status(500).send({
-      status: "error",
-      mensaje: "Error interno del servidor al subir la imagen inicial."
-    });
-  }
-};
-*/
-
 
 
 // Metodo para subir una imagen optimizada de prueba inicial a cloudinary. Solo la uso desde postman. No desde el front
