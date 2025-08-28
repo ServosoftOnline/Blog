@@ -82,7 +82,7 @@
 @media (max-width: 576px) {        
 
     .search-nav-container input[type="text"] {
-        width: 400px;
+        width: auto;
     }
     
     
