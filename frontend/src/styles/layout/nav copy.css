@@ -4,13 +4,20 @@
 /* Tabletas (horizontal): max-width: 992px */
 /* Monitores: min-width: 1200px */
 
-/* ===== Navegación ===== */
+/* ===== Estilos para Escritorio (901px o más) ===== */
 .nav {
   grid-area: nav;
   background: var(--verdeOliva);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
 }
 
+/* En escritorio, el botón de hamburguesa está oculto */
+.nav-toggle {
+  display: none;
+}
+
+/* El menú es horizontal por defecto */
 .nav ul {
   display: flex;
   justify-content: center;
@@ -19,69 +26,80 @@
   height: 100%;
 }
 
-.nav li {
+.nav ul li {
   margin: 0 20px;
 }
 
-.nav a {
+.nav ul li a {
   display: flex;
   align-items: center;
   height: 100%;
-  font-size: 1.2rem; /* fuente más grande */
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--blanco);
   text-decoration: none;
   transition: all 0.3s;
 }
 
-.nav a:hover {
-  transform: scale(1.2); /* solo agranda fuente */
+.nav ul li a:hover {
+  transform: scale(1.2);
 }
 
-/* RESPONSIVE */
+/* DISEÑO RESPONSIVE */
 
-/* ===== AJUSTES PARA DISPOSITIVOS MÁS PEQUEÑOS ===== */
-
-/* Estilos para tabletas (vertical) y móviles grandes (max-width: 768px) */
-/* La barra de navegación puede empezar a verse apretada, ajustamos el tamaño de la fuente */
+/* Móviles y tabletas (vertical): max-width: 768px */
 @media (max-width: 768px) {
-  .nav li {
-    margin: 0 15px; /* Reduce el margen entre los elementos */
-  }
 
-  .nav a {
-    font-size: 1.1rem; /* Reduce un poco el tamaño de la fuente */
-  }
 }
 
 
-
-/* Estilos para móviles pequeños (max-width: 576px). Navegación vertical */
+/* Móviles pequeños: max-width: 576px */
 @media (max-width: 576px) {
-  .nav {
-    padding: 10px 0; /* Agrega un poco de espacio en la parte superior e inferior */
+
+  /* El botón de hamburguesa se hace visible */
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--blanco);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 100;
   }
 
+  /*
+    Ocultamos el menú horizontal.
+    Por defecto, está fuera de la pantalla.
+  */
   .nav ul {
-    flex-direction: column; /* Cambia la dirección a columna */
-    height: auto; /* La altura se ajusta al contenido */
-    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--verdeOliva);
+    flex-direction: column; /* El menú es ahora vertical */
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
+  }
+  
+  /* El menú vertical aparece al añadir la clase 'show' con React */
+  .nav ul.show {
+    transform: translateX(0);
   }
 
-  .nav li {
-    margin: 10px 0; /* Aumenta el espacio vertical entre los elementos */
-    width: 100%; /* Hace que cada elemento ocupe todo el ancho */
-    text-align: center;
+  .nav ul li {
+    margin: 20px 0;
+    height: 100%; 
   }
 
-  .nav a {
-    display: block; /* Para que el enlace ocupe todo el ancho del li */
-    padding: 10px 0;
-    font-size: 1rem; /* Reduce aún más el tamaño de la fuente */
-  }
-
-  .nav a:hover {
-    transform: none; /* Desactivamos el efecto de escala para evitar saltos inesperados en móviles */
-    background-color: rgba(255, 255, 255, 0.1); /* Efecto hover simple */
+  .nav ul li a {
+    font-size: 1.5rem;
   }
 }

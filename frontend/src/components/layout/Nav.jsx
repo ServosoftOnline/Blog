@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './../../styles/layout/nav.css';
 import { Buscador } from '../pages/Buscador';
 
-
 export const Nav = () => {
+
+    // Estados y funciones para abrir y cerrar la hamburguesa
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleToggleMenu = () => {
@@ -15,6 +16,7 @@ export const Nav = () => {
         setIsMenuOpen(false);
     };
 
+    // Renderizo
     return (
         <nav className="nav">
 
@@ -22,13 +24,12 @@ export const Nav = () => {
                 ☰
             </button>
 
-            {/* AQUÍ ESTÁ EL CAMBIO: añadimos la clase 'nav-menu' */}
             <ul className={`nav-menu ${isMenuOpen ? 'show' : ''}`}>
                 <li><NavLink to="/inicio" onClick={handleCloseMenu}>Inicio</NavLink></li>
                 <li><NavLink to="/articulos" onClick={handleCloseMenu}>Recetas</NavLink></li>  
                 <li><NavLink to="/crear-articulo" onClick={handleCloseMenu}>Crear receta</NavLink></li>
-                <li><NavLink to="/contacto" onClick={handleCloseMenu}>Contacto</NavLink></li>  
-                <Buscador/>
+                <li><NavLink to="/contacto" onClick={handleCloseMenu}>Contacto</NavLink></li>
+                <Buscador/>            
             </ul>
             
         </nav>

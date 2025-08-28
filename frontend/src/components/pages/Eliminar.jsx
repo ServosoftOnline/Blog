@@ -45,6 +45,7 @@ const Eliminar = () => {
 
     // Renderizo
     return (        
+        
         <article className="articulo-detalle">
             <h2 className='eliminar-receta'>Confirmar eliminación de la receta</h2>
 

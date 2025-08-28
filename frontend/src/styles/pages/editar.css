@@ -1,7 +1,6 @@
 /* ESTILOS PARA EL FORMULARIO DE EDITAR ARTICULOS */
 .formulario {
   width: 100%;
-  max-width: 90%; 
   background: var(--blanco);
   padding: 30px;
   border-radius: 10px;
@@ -17,8 +16,8 @@
 
 .formulario label {
   font-weight: bold;
-  margin-bottom: 8px;
-  color: #333;
+  margin-bottom: 8px;  
+  color: var(--textoPrincipal);
 }
 
 .formulario input[type="text"],

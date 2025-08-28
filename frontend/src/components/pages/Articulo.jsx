@@ -5,6 +5,7 @@ import { fechaFormateada, tiempoRelativo } from '../../helpers/Fechas';
 import { useApi } from '../../hooks/useApi';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './../../styles/pages/articulo.css';
 
 
 // Componente

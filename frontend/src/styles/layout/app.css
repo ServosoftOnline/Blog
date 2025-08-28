@@ -17,3 +17,20 @@
   min-height: 100vh;
   gap: 10px;  
 }
+
+/* DISEÑO RESPONSIVE */
+
+/* Tabletas y móviles (vertical): max-width: 768px */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "lateral"
+      "footer";
+    grid-template-rows: auto 50px auto auto auto;
+    grid-template-columns: 1fr;
+    gap: 0px; /* Puedes ajustar el espacio entre las secciones si lo necesitas */
+  }
+}

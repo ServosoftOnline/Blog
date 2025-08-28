@@ -109,7 +109,7 @@ const Editar = () => {
     // Renderizo
     return (
         <div className="jumbo">
-            <h3>Introduzca las modificaciones de la receta</h3>
+            <h2>Introduzca modificaciones</h2>
 
             <form className="formulario" onSubmit={handleSubmit}>
 

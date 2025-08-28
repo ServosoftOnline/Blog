@@ -9,6 +9,7 @@ const Inicio = () => {
 
     return (
         <div>
+
             <h3>{anchoActual}</h3>
             <div className='Bienvenida'>
                 <h2>Bienvenido al blog culinario</h2>                
@@ -18,11 +19,8 @@ const Inicio = () => {
             {/* Mensaje de "En Construcción" */}
             <div className='en-construccion'>
                 <i className="fa-solid fa-cogs"></i>
-                <p>
-                    El blog se encuentra aún en construcción
-                </p>
-            </div>
-            
+                <p> Blog en construcción</p>
+            </div>            
 
             {/* Botones */}
             <div className='botones-articulos'>

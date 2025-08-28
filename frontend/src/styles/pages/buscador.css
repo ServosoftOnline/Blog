@@ -7,7 +7,7 @@
 /* Estilos del buscador dentro de la barra de navegación */
 .search-nav-container {
     display: flex;
-    align-items: center;
+    align-items: center;        
 }
 
 .search-nav-container form {
@@ -21,11 +21,12 @@
     padding: 8px 12px;
     padding-right: 40px; /* Asegura espacio para la lupa */
     border-radius: 20px;
-    border: 1px solid var(--blanco);
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */    
+    border: 1px solid var(--blanco);    
     color: var(--blanco);
     font-weight: bold;
     transition: all 0.3s;
+    background-color: var(--verdeClaro);
+    border: 2px solid var(--grisClaro);
 }
 
 .search-nav-container input[type="text"]::placeholder {
@@ -60,5 +61,19 @@
 
 /* Cambia el color del ícono cuando el input está en foco */
 .search-nav-container input[type="text"]:focus + button .search-icon {
-    color: var(--verdeOliva); 
+    color: var(--verdeOliva);     
+}
+
+
+/* --- DISEÑO RESPONSIVE --- */
+/* Estilos del buscador cuando se muestra debajo de la barra de navegación */
+@media (max-width: 768px) {
+
+    .search-nav-container {    
+        justify-content: center;        
+    }
+    
+    .search-nav-container input[type="text"] {
+        width: 250px;
+    }
 }

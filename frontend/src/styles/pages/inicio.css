@@ -1,6 +1,6 @@
 .Bienvenida {
   display:flex;
-  flex-direction: column;
+  flex-direction: column;  
   margin-bottom: 20px;
 }
 
@@ -10,12 +10,11 @@
   gap: 15px;
   text-align: center;
   padding: 5px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   color: var(--naranjaQuemado); /* o el color que prefieras */
 }
 
 .en-construccion i {
-  font-size: 4rem; /* Ajusta el tamaño del ícono */
-  margin-bottom: 18px;
+  font-size: 3rem; /* Ajusta el tamaño del ícono */  
 }
