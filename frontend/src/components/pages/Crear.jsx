@@ -75,7 +75,7 @@ const Crear = () => {
     return (
         <div className="jumbo">
 
-            <h3>Introduzca la nueva receta</h3>
+            <h2>Nueva receta</h2>
             <form className="formulario" onSubmit={handleSubmit}>
 
                 <div className="form-group">

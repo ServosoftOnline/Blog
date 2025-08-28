@@ -6,17 +6,13 @@
 
 /* ===== Estilos para Escritorio (901px o más) ===== */
 .nav {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
   grid-area: nav;
   background: var(--verdeOliva);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: relative;
-  
-  /* Hacemos que la barra de navegación sea un contenedor flex */
-  display: flex;
-  
-  /* Centramos el UL y el Buscador como un solo bloque */
-  justify-content: center; 
-  align-items: center;
+  position: relative;  
 }
 
 /* En escritorio, el botón de hamburguesa está oculto */
@@ -41,7 +37,6 @@
   margin: 0 20px;
 }
 
-/* Eliminamos el margen del último LI para que no haya espacio extra */
 .nav-menu li:last-child {
   margin-right: 35px;
 }
@@ -61,20 +56,20 @@
   transform: scale(1.2);
 }
 
-/* El buscador en escritorio está fuera del menú y se alinea a la derecha */
-.nav > .buscador {
-    margin-right: 20px;    
-}
-
-
 /* --- DISEÑO RESPONSIVE --- */
 
 /* Móviles y tabletas (vertical): max-width: 768px */
 @media (max-width: 768px) {
   .nav {
     display: block; /* Vuelve a un display de bloque para el diseño móvil */
-    justify-content: justify; 
-    
+  }
+
+  .nav-menu li {
+    margin: 0 10px;
+  }
+
+  .nav-menu li a {
+    font-size: 1rem;
   }
   
   /* Oculta el buscador que se encuentra fuera del menú */

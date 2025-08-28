@@ -66,7 +66,8 @@
 
 
 /* --- DISEÑO RESPONSIVE --- */
-/* Estilos del buscador cuando se muestra debajo de la barra de navegación */
+
+/* Móviles y tabletas (vertical): max-width: 768px */
 @media (max-width: 768px) {
 
     .search-nav-container {    
@@ -74,6 +75,6 @@
     }
     
     .search-nav-container input[type="text"] {
-        width: 250px;
+        width: 210px;
     }
 }
