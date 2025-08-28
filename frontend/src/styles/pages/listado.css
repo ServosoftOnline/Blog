@@ -96,21 +96,24 @@
 }
 
 /* DISEÑO RESPONSIVE */
-/* Móviles pequeños: max-width: 576px */
-@media (max-width: 576px) { 
-
+/* Móviles y tabletas (vertical): max-width: 768px */
+@media (max-width: 768px) {
   .articulo-item {    
     flex-direction: column;   
     align-items: center; 
   }
-  
-  .articulo-item .imagen-articulo {
-    
+
+  .articulo-item .imagen-articulo {    
     width: 100%; 
     height: auto; 
     padding: 15px; 
     margin: 0; 
   }
+
+}
+
+/* Móviles pequeños: max-width: 576px */
+@media (max-width: 576px) { 
   
   .articulo-item .datos {
     width: 100%;

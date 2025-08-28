@@ -81,8 +81,11 @@
 /* Móviles pequeños: max-width: 576px */
 @media (max-width: 576px) {        
 
+    .search-nav-container {    
+        margin-top: 5px;
+    }
     .search-nav-container input[type="text"] {
-        width: auto;
+        width: auto;        
     }
     
     

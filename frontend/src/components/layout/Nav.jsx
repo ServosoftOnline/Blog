@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './../../styles/layout/nav.css';
-import { Buscador } from '../pages/Buscador';
 
+// Componente
 export const Nav = () => {
 
     // Renderizo
@@ -14,8 +14,6 @@ export const Nav = () => {
                 <li><NavLink to="/crear-articulo">Crear receta</NavLink></li>
                 <li><NavLink to="/contacto">Contacto</NavLink></li>
             </ul>
-
-            <Buscador/> 
             
         </nav>
     );

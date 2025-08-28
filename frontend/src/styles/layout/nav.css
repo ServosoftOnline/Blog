@@ -57,13 +57,10 @@
 /* --- DISEÑO RESPONSIVE --- */
 
 /* Móviles y tabletas (vertical): max-width: 768px */
-@media (max-width: 768px) {
-  .nav {
-    display: block; /* Vuelve a un display de bloque para el diseño móvil */
-  }
+@media (max-width: 768px) {  
 
   .nav-menu li {
-    margin: 0 10px;
+    margin: 0 5px;
   }
 
   .nav-menu li a {
@@ -76,8 +73,8 @@
 @media (max-width: 576px) { 
   
   .nav {      
-      display: flex;
-      justify-content: flex-start;
+      display: block; /* Vuelve a un display de bloque para el diseño móvil */
+      justify-content: center;
       align-items: center;
       padding: 0 1rem;       
   }

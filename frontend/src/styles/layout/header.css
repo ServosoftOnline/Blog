@@ -1,3 +1,4 @@
+/* PLANTILLA SUGERIDA AL COMPLETO POR GEMINI */
 /* ===== Puntos de Ruptura (Breakpoints) ===== */
 /* Móviles pequeños: max-width: 576px */
 /* Móviles y tabletas (vertical): max-width: 768px */
@@ -9,8 +10,8 @@
   grid-area: header;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Alinea los elementos a los extremos */
-  padding: 0 1rem; /* Añade un poco de espacio en los lados */
+  justify-content: space-between;
+  padding: 0 1rem;
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   font-weight: 700;
@@ -29,6 +30,7 @@
   color: var(--marron);
 }
 
+/* Oculta la lista por defecto, se maneja con JS */
 .menu-hamburguesa {
   display:none;
 }
@@ -41,11 +43,6 @@
 /* Móviles pequeños: max-width: 576px */
 @media (max-width: 576px) {
 
-  .header {
-    /* justify-content: space-between; */
-    padding: 0 1rem;
-  }
-
   /* El botón de hamburguesa se muestra */
   .nav-toggle {
     display: block;
@@ -54,23 +51,35 @@
     border: none;
     cursor: pointer;
     color: var(--verdeOliva);
+    transition: transform 0.3s ease;
+    margin-bottom: 8px;
   }
 
+  /* Estado activo del botón para un efecto visual */
+  .nav-toggle:active {
+    transform: scale(0.95);
+  }
+
+  /* El menú en sí */
   .menu-hamburguesa {
-    /* Por defecto, el menú está fuera de la pantalla */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--beige);
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    /* Fondo con un sutil degradado que mezcla dos de tus beiges */
+    background: linear-gradient(135deg, var(--beige) 0%, var(--fondo) 100%);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.15); /* Sombra más pronunciada para profundidad */
+    border-right: 2px solid var(--naranjaQuemado); /* Un borde distintivo a la derecha */
+    transform: translateX(-100%);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     z-index: 10;
+    list-style: none;
+    padding: 0;    
   }
 
   /* La clase 'show' hace visible el menú */
@@ -78,9 +87,68 @@
     transform: translateX(0);
   }
 
+  /* Estilos de los elementos de la lista */
   .menu-hamburguesa li {
-    margin: 1.5rem 0;
-    font-size: 1.5rem;
+    margin: 0.6rem 0; /* Un poco más juntos aún */
+    width: 85%; /* Ligeramente más ancho para la línea */
+    text-align: center;
+    /* Línea divisoria con un degradado sutil */
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, transparent 5%, var(--verdeClaro) 20%, var(--verdeOliva) 80%, transparent 95%) 1;
+    border-image-slice: 1;
+    padding-bottom: 0.6rem; /* Ajuste el padding */
+    transition: transform 0.2s ease-in-out; /* Transición al hacer hover en el ítem */
+  }
+
+  /* Efecto al pasar el mouse por encima del elemento de la lista */
+  .menu-hamburguesa li:hover {
+    transform: scale(1.03); /* Ligeramente más grande */
+  }
+
+  /* Elimina el borde inferior del último elemento */
+  .menu-hamburguesa li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  /* Estilos de los enlaces de navegación */
+  .menu-hamburguesa li a {
+    text-decoration: none;
+    font-size: 1.3rem; /* Ligeramente más grande para más presencia */
+    color: var(--textoPrincipal); /* Color base más oscuro para legibilidad */
+    font-weight: 600; /* Un poco más de peso */
+    transition: color 0.3s ease;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.7px; /* Aumentamos el espaciado para un toque elegante */
+  }
+
+  /* Efecto al pasar el mouse por encima de los enlaces */
+  .menu-hamburguesa li a:hover,
+  .menu-hamburguesa li a:focus {
+    color: var(--naranjaQuemado); /* Naranja Quemado para el hover */
+  }
+
+  /* Clase 'active' de react-router-dom para el enlace actual */
+  .menu-hamburguesa li a.active {
+    color: var(--verdeOliva); /* Verde Oliva para la ruta activa */
+    font-weight: 700;
+  }
+  
+  /* Botón de cierre */
+  .menu-hamburguesa .cerrar-menu {
+    position: absolute;
+    top: 1.2rem; /* Ajustamos la posición */
+    right: 1.2rem;
+    font-size: 2.2rem; /* Ligeramente más grande */
+    background: transparent;
+    border: none;
+    color: var(--marron);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease-in-out;
+  }
+
+  .menu-hamburguesa .cerrar-menu:hover {
+    color: var(--rojoFuerte); /* Rojo Fuerte para el hover, indicando acción de cerrar */
+    transform: rotate(90deg); /* Animación al cerrar */
   }
 }
-

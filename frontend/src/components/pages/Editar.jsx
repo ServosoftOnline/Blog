@@ -108,7 +108,7 @@ const Editar = () => {
 
     // Renderizo
     return (
-        <div className="jumbo">
+        <div className="modificaciones-container">
             <h2>Introduzca modificaciones</h2>
 
             <form className="formulario" onSubmit={handleSubmit}>

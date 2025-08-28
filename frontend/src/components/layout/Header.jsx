@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './../../styles/layout/header.css'
+import { Buscador } from '../pages/Buscador';
 
 export const Header = () => {
 
@@ -23,15 +24,18 @@ export const Header = () => {
         <h1>Blog culinario</h1>
       </div>
 
+      <Buscador/>
+      
       <button className="nav-toggle" onClick={handleToggleMenu} aria-label="Abrir menú de navegación">
           ☰
       </button>
 
       <ul className={`menu-hamburguesa ${isMenuOpen ? 'show' : ''}`}>
+        <button className='cerrar-menu' onClick={handleCloseMenu} aria-label="Cerrar menú de navegación">X</button>
         <li><NavLink to="/inicio" onClick={handleCloseMenu}>Inicio</NavLink></li>
         <li><NavLink to="/articulos" onClick={handleCloseMenu}>Recetas</NavLink></li>  
         <li><NavLink to="/crear-articulo" onClick={handleCloseMenu}>Crear receta</NavLink></li>
-        <li><NavLink to="/contacto" onClick={handleCloseMenu}>Contacto</NavLink></li>            
+        <li><NavLink to="/contacto" onClick={handleCloseMenu}>Contacto</NavLink></li>          
       </ul>
 
     </header>

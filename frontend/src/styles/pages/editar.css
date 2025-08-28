@@ -5,6 +5,22 @@
 /* Monitores: min-width: 1200px */
 
 /* ESTILOS PARA EL FORMULARIO DE EDITAR ARTICULOS */
+
+.modificaciones-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  width: 100%; 
+
+  h2 {
+    color: var(--verdeOliva);
+    margin-bottom: 20px;
+  }
+
+}
+
 .formulario {
   width: 100%;
   background: var(--blanco);
@@ -46,4 +62,14 @@
 .formulario input[type="file"]:focus {
   border-color: var(--verdeClaro);
   outline: none;
+}
+
+/* Móviles y tabletas (vertical): max-width: 768px */
+@media (max-width: 768px) { 
+  .modificaciones-container{
+    background-color: red;
+    width: 40%; 
+
+  }
+  
 }
