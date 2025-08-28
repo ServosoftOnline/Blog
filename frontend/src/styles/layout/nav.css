@@ -15,10 +15,7 @@
   position: relative;  
 }
 
-/* En escritorio, el botón de hamburguesa está oculto */
-.nav-toggle {
-  display: none;
-}
+
 
 /* El menú es horizontal por defecto */
 .nav-menu {
@@ -31,6 +28,7 @@
   /* Eliminamos el margen para que esté pegado al buscador */
   margin: 0;
   padding: 0;
+
 }
 
 .nav-menu li {
@@ -72,60 +70,20 @@
     font-size: 1rem;
   }
   
-  /* Oculta el buscador que se encuentra fuera del menú */
-  .nav > .buscador {
-    display: none;
-  }
 }
 
-
 /* Móviles pequeños: max-width: 576px */
-@media (max-width: 576px) {
-
-  /* El botón de hamburguesa se hace visible */
-  .nav-toggle {
-    display: block;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    color: var(--blanco);
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 100;
-  }
-
-  /*
-    Ocultamos el menú horizontal.
-    Por defecto, está fuera de la pantalla.
-  */
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--verdeOliva);
-    flex-direction: column; /* El menú es ahora vertical */
-    justify-content: center;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 99;
-  }
+@media (max-width: 576px) { 
   
-  /* El menú vertical aparece al añadir la clase 'show' con React */
-  .nav-menu.show {
-    transform: translateX(0);
+  .nav {      
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 1rem;       
   }
 
-  .nav-menu li {
-    margin: 20px 0;
-    height: 100%; 
+  .nav-menu {
+    display: none; 
   }
-
-  .nav-menu li a {
-    font-size: 1.5rem;
-  }
+   
 }

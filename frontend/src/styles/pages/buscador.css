@@ -64,7 +64,6 @@
     color: var(--verdeOliva);     
 }
 
-
 /* --- DISEÑO RESPONSIVE --- */
 
 /* Móviles y tabletas (vertical): max-width: 768px */
@@ -77,4 +76,14 @@
     .search-nav-container input[type="text"] {
         width: 210px;
     }
+}
+
+/* Móviles pequeños: max-width: 576px */
+@media (max-width: 576px) {        
+
+    .search-nav-container input[type="text"] {
+        width: 400px;
+    }
+    
+    
 }

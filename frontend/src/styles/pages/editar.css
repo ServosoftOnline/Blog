@@ -1,3 +1,9 @@
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
 /* ESTILOS PARA EL FORMULARIO DE EDITAR ARTICULOS */
 .formulario {
   width: 100%;

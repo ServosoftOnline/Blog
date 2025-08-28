@@ -6,31 +6,39 @@
 
 /* ===== Estilos para Escritorio (901px o más) ===== */
 .nav {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
   grid-area: nav;
   background: var(--verdeOliva);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: relative;
+  position: relative;  
 }
 
-/* En escritorio, el botón de hamburguesa está oculto */
-.nav-toggle {
-  display: none;
-}
+
 
 /* El menú es horizontal por defecto */
-.nav ul {
+.nav-menu {
   display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
   height: 100%;
+  
+  /* Eliminamos el margen para que esté pegado al buscador */
+  margin: 0;
+  padding: 0;
 }
 
-.nav ul li {
+.nav-menu li {
   margin: 0 20px;
 }
 
-.nav ul li a {
+.nav-menu li:last-child {
+  margin-right: 35px;
+}
+
+.nav-menu li a {
   display: flex;
   align-items: center;
   height: 100%;
@@ -41,65 +49,58 @@
   transition: all 0.3s;
 }
 
-.nav ul li a:hover {
+.nav-menu li a:hover {
   transform: scale(1.2);
 }
 
-/* DISEÑO RESPONSIVE */
+/* --- DISEÑO RESPONSIVE --- */
 
 /* Móviles y tabletas (vertical): max-width: 768px */
 @media (max-width: 768px) {
-
-}
-
-
-/* Móviles pequeños: max-width: 576px */
-@media (max-width: 576px) {
-
-  /* El botón de hamburguesa se hace visible */
-  .nav-toggle {
-    display: block;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    color: var(--blanco);
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 100;
+  .nav {
+    display: block; /* Vuelve a un display de bloque para el diseño móvil */
   }
 
-  /*
-    Ocultamos el menú horizontal.
-    Por defecto, está fuera de la pantalla.
-  */
-  .nav ul {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--verdeOliva);
-    flex-direction: column; /* El menú es ahora vertical */
-    justify-content: center;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 99;
+  .nav-menu li {
+    margin: 0 10px;
+  }
+
+  .nav-menu li a {
+    font-size: 1rem;
   }
   
-  /* El menú vertical aparece al añadir la clase 'show' con React */
-  .nav ul.show {
-    transform: translateX(0);
+}
+
+/* Móviles pequeños: max-width: 576px */
+@media (max-width: 576px) { 
+  
+  .nav-menu {
+    /* Oculta toda la lista, incluyendo el buscador */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
   }
 
-  .nav ul li {
-    margin: 20px 0;
-    height: 100%; 
+  /* Aplica un estilo solo al último elemento, que es el buscador */
+  .nav-menu li:last-child {
+    display: block; /* Muestra solo el buscador */
+    margin: 0;
+    width: 100%;
+    text-align: center;
   }
 
-  .nav ul li a {
-    font-size: 1.5rem;
+  .nav {
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  .buscador-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

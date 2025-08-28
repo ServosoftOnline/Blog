@@ -12,7 +12,7 @@
     "nav nav nav"
     "content content lateral"
     "footer footer footer";  
-  grid-template-rows: 100px 70px auto 90px;
+  grid-template-rows: 100px 70px auto 60px;
   grid-template-columns: 2fr 1fr;
   min-height: 100vh;
   gap: 10px;  
@@ -29,7 +29,7 @@
       "content"
       "lateral"
       "footer";
-    grid-template-rows: auto 50px auto auto auto;
+    grid-template-rows: 100px 50px auto auto 60px;
     grid-template-columns: 1fr;
     gap: 0px; /* Puedes ajustar el espacio entre las secciones si lo necesitas */
   }

@@ -1,10 +1,7 @@
 // COMPONENTE PPAL
 import { Footer } from './components/layout/Footer';
-import { Header } from './components/layout/Header';
 import { Rutas } from './routing/Rutas';
 import './styles/layout/app.css';
-
-
 
 // Componente
 const App = () => {  
@@ -12,10 +9,7 @@ const App = () => {
     <>
       <div className='layout'>   
 
-        {/* Cabecera */}
-        <Header/>
-
-        {/* Rutas. Contiene la barra de navegación y el sidebar */}
+        {/* Rutas. Contiene el header, la barra de navegación y el sidebar */}
         <Rutas/>
 
         {/* Pie de página */}
