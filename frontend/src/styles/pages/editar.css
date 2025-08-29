@@ -1,60 +1,64 @@
 /* ===== Puntos de Ruptura (Breakpoints) ===== */
-/* Móviles pequeños: max-width: 576px */
 /* Móviles y tabletas (vertical): max-width: 768px */
 /* Tabletas (horizontal): max-width: 992px */
-/* Monitores: min-width: 1200px */
 
 /* ESTILOS PARA EL FORMULARIO DE EDITAR ARTICULOS */
 
+/* Contenedor principal del componente */
 .modificaciones-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
   align-items: center;
   text-align: center;
-  width: 100%; 
-
-  h2 {
-    color: var(--verdeOliva);
-    margin-bottom: 20px;
-  }
-
+  
 }
 
+.modificaciones-container h2 {
+  color: var(--verdeOliva);
+  margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
 .formulario {
-  width: 100%;
+  width: 100%;  
   background: var(--blanco);
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Espacio para los mensajes de estado */
 }
 
+/* Grupos de formulario (label + input) */
 .formulario .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 25px;
-  text-align: left;  
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .formulario label {
   font-weight: bold;
-  margin-bottom: 8px;  
+  margin-bottom: 8px;
   color: var(--textoPrincipal);
+  font-size: 1.1rem;
 }
 
+/* Estilos para los campos de entrada */
 .formulario input[type="text"],
 .formulario textarea,
 .formulario input[type="file"] {
+  width: 100%;
   padding: 12px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background: var(--blanco);
-  font-size: 14px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
 }
 
 .formulario textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
 }
 
 .formulario input[type="text"]:focus,
@@ -64,12 +68,29 @@
   outline: none;
 }
 
-/* Móviles y tabletas (vertical): max-width: 768px */
-@media (max-width: 768px) { 
-  .modificaciones-container{
-    background-color: red;
-    width: 40%; 
+/* Miniatura de la imagen */
+.formulario .miniatura {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
 
+/* Media Queries para dispositivos más pequeños */
+@media (max-width: 768px) {
+  .formulario {
+    padding: 10px;
   }
-  
+}
+
+@media (max-width: 576px) {
+ 
+  .formulario label {
+    font-size: 1rem;
+  }
+  .formulario input[type="text"],
+  .formulario textarea {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
 }

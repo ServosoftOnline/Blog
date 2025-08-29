@@ -46,7 +46,7 @@ export const Rutas = () => {
           <Route path='/editar/:id'       element={<Editar />} />
           <Route path='/eliminar/:id'     element={<Eliminar />} />
           <Route path='/borrar-todos/'    element={<Iniciar />} />
-
+          
           {/* Ruta 404 */}
           <Route path='*' element={
             <div className='jumbo'>

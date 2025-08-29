@@ -108,7 +108,9 @@ const Editar = () => {
 
     // Renderizo
     return (
+        
         <div className="modificaciones-container">
+
             <h2>Introduzca modificaciones</h2>
 
             <form className="formulario" onSubmit={handleSubmit}>
@@ -149,23 +151,23 @@ const Editar = () => {
                     <input type="file" name="file0" id="file" />
                 </div>
 
-                {/* Botones */}
+ 
                 <div className="botones-articulos">
                     <input type="submit" value="Guardar" className="edit" />
                     <Link to="/articulos">
                         <button className="back">Volver</button>
                     </Link>                    
                 </div>
-
                 
             </form>
-
+             
             <div className="mensajes-de-estado">
                 {error && <h3 className="mensaje-error">{error}</h3>}
                 {actualizado && (<h3 className="mensaje-exito">{actualizado.mensaje}</h3>)}
             </div>
 
         </div>
+        
     );
 };
 

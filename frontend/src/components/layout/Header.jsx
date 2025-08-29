@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import './../../styles/layout/header.css'
-import { Buscador } from '../pages/Buscador';
+import './../../styles/layout/header.css';
 
 export const Header = () => {
 
@@ -23,8 +22,6 @@ export const Header = () => {
         <div>🍴</div>        
         <h1>Blog culinario</h1>
       </div>
-
-      <Buscador/>
       
       <button className="nav-toggle" onClick={handleToggleMenu} aria-label="Abrir menú de navegación">
           ☰

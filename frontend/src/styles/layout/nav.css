@@ -15,8 +15,6 @@
   position: relative;  
 }
 
-
-
 /* El menú es horizontal por defecto */
 .nav-menu {
   display: flex;
@@ -54,6 +52,11 @@
   transform: scale(1.2);
 }
 
+.seeker-content {  
+  display:none;
+}
+
+
 /* --- DISEÑO RESPONSIVE --- */
 
 /* Móviles y tabletas (vertical): max-width: 768px */
@@ -81,6 +84,14 @@
 
   .nav-menu {
     display: none; 
+  }
+
+  .seeker-content {  
+    display:flex;
+  }
+
+  .seeker-menu {
+    display: none;
   }
    
 }
