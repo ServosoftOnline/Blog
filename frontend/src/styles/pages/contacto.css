@@ -1,9 +1,14 @@
-/* Estilos para el componente Contacto */
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
 
 /* Ocupa todo el ancho del contenedor principal */
 .contacto {
   width: 100%;
-  margin: 0;
+  margin-top: 15px;
   border-radius: 16px;
   overflow: hidden;
   background: var(--beige);
@@ -136,3 +141,21 @@
 
 .card.portfolio::before { background: var(--naranjaQuemado); }
 .card.portfolio i { background: var(--naranjaQuemado); }
+
+
+/* DISEÑO RESPONSIVE */
+/* Móviles pequeños: max-width: 576px */
+@media (max-width: 576px) {
+
+  .contacto {
+    width: 85%; 
+    margin: 0 auto;      
+    margin-top: 15px;
+  }
+
+  .contacto-lista {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* <-- más ancho */
+    padding: 20px;
+  }
+
+}

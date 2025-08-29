@@ -114,3 +114,12 @@ h1, h2, h3, p {
   transform: scale(1.05);
 }
 
+/* DISEÑO RESPONSIVE */
+
+/* Móviles pequeños: max-width: 576px */
+@media (max-width: 576px) { 
+  .botones-articulos {    
+    text-align: center;
+  }
+}
+

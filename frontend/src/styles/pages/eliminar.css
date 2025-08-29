@@ -1,3 +1,9 @@
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
 .articulo-detalle .eliminar-receta {
   margin-left: 20px;
   color: var(--rojoFuerte);  
@@ -44,14 +50,34 @@
 
 
 .articulo-detalle .datos .fechas {
-  display: flex;
-  flex-direction: column;  
+  display: flex;  
   margin-top: 10px;
   margin-bottom: 15px;;
   
   
   p {
     margin:0;
-    font-weight: bolder;
+    font-weight: bolder;    
   }
+}
+
+.articulo-detalle .datos .fechas .fecha {
+  display: flex;
+  gap: 5px;    
+}
+
+/* DISEÑO RESPONSIVE */
+
+/* Móviles pequeños: max-width: 576px */
+@media (max-width: 576px) {
+  .articulo-detalle {
+    margin-top: 15px;
+  }
+
+  .articulo-detalle .datos .fechas .fecha {
+    flex-direction: column;
+    gap: 0px;
+    margin-bottom: 5px;
+  }
+
 }

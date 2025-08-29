@@ -6,8 +6,9 @@
 
 /* Estilos del buscador dentro de la barra de navegación */
 .search-nav-container {
+    grid-area: seeker;    
     display: flex;
-    align-items: center;        
+    align-items: center;
 }
 
 .search-nav-container form {
@@ -67,11 +68,7 @@
 /* --- DISEÑO RESPONSIVE --- */
 
 /* Móviles y tabletas (vertical): max-width: 768px */
-@media (max-width: 768px) {
-
-    .search-nav-container {    
-        justify-content: center;        
-    }
+@media (max-width: 768px) {    
     
     .search-nav-container input[type="text"] {
         width: 210px;
@@ -83,10 +80,12 @@
 
     .search-nav-container {    
         margin-top: 5px;
+        
     }
     .search-nav-container input[type="text"] {
         width: auto;        
     }
     
-    
 }
+    
+    

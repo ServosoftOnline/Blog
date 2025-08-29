@@ -16,21 +16,23 @@
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.articulo-item .titulo-item {
+  display: none;
+}
+
 .articulo-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
-
 .articulo-item .imagen-articulo {
   flex-shrink: 0;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 15px;
+  justify-content: center;  
   padding: 10px;
 }
 
@@ -83,21 +85,26 @@
 }
 
 .articulo-item .datos .fechas {
-  display: flex;
+  display: flex;  
   flex-direction: column;  
-  margin-top: 10px;
-  margin-bottom: 15px;;
-  
-  
-  p {
-    margin:0;
-    font-weight: bolder;
-  }
+  margin-top: 8px;  
+  margin-bottom: 8px;
 }
+
+.articulo-item .datos .fechas .fecha {
+  display: flex;  
+  font-weight: bolder;
+}
+
+.articulo-item .datos .fechas .fecha p {
+  margin: 0; /* Esto elimina todos los márgenes */
+}
+
 
 /* DISEÑO RESPONSIVE */
 /* Móviles y tabletas (vertical): max-width: 768px */
 @media (max-width: 768px) {
+
   .articulo-item {    
     flex-direction: column;   
     align-items: center; 
@@ -114,16 +121,58 @@
 
 /* Móviles pequeños: max-width: 576px */
 @media (max-width: 576px) { 
+
+  .articulo-item .titulo-item {
+    display: block;
+    margin-top: 15px;
+    
+    a {
+      color: var(--verdeOliva);
+      text-decoration: none;
+    }
+  }
+
+  .titulo-datos {
+    display: none;
+  }
   
   .articulo-item .datos {
     width: 100%;
     text-align: left;    
     padding: 20px 15px; 
     margin-top: 15px;
-    margin-bottom: 30px;;
+    margin-bottom: 30px;
   }
   
   .articulo-item .datos h3 {
     text-align: left;
   }
+
+  /* NUEVOS ESTILOS PARA LAS FECHAS CON DOS LÍNEAS VERTICALES */
+  .articulo-item .datos .fechas {
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 15px;
+    gap: 10px; /* Espacio entre los bloques de fecha */
+  }
+
+  .articulo-item .datos .fechas .fecha {
+    display: flex;
+    flex-direction: column; /* Cambiamos a columna para los párrafos */
+    padding-left: 10px; /* Espacio entre la línea y el texto */
+    border-left: 2px solid rgba(0,0,0,0.1); /* Línea vertical sutil */
+  }
+  
+  .articulo-item .datos .fechas .fecha p:first-child {
+    font-weight: bold;
+    color: var(--verdeOliva);
+    margin-bottom: 2px;
+  }
+
+  .articulo-item .datos .fechas .fecha p:last-child {
+    font-size: 0.95rem;
+    color: var(--textoSecundario);
+    line-height: 1.2;
+  }
+  /* FIN DE NUEVOS ESTILOS */
 }

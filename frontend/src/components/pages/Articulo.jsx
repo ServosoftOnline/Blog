@@ -48,18 +48,19 @@ const Articulo = () => {
             <div className="datos">
                 <h3>Receta: {datos.consulta.titulo}</h3>
                 <div className='fechas'>
-                
-                    <p className="fecha">
-                        Receta creada: {" "} 
-                        {fechaFormateada(datos.consulta.fecha)} 
-                        <span className="relativa"> ( {tiempoRelativo(datos.consulta.fecha)} )</span>
-                    </p>                      
 
-                    <p className="fecha">
-                        Última fecha de modificación:  {" "}
-                        {fechaFormateada(datos.consulta.fechaActualizacion)} 
-                        <span className="relativa"> ( {tiempoRelativo(datos.consulta.fechaActualizacion)} )</span>
-                    </p> 
+                    <div className='fecha'>
+                        <p>Creada:</p>
+                        <p>{fechaFormateada(datos.consulta.fecha)} - {tiempoRelativo(datos.consulta.fecha)} </p>
+                    </div>
+
+                    <div className='fecha'>
+                        <p>Modificada:</p>
+                        <p>
+                            {fechaFormateada(datos.consulta.fechaActualizacion)} - {tiempoRelativo(datos.consulta.fechaActualizacion)}  
+                        </p>
+
+                    </div>   
 
                 </div>
                                  

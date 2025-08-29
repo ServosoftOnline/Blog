@@ -22,7 +22,7 @@ const Eliminar = () => {
     
     // Si estubiera cargando devuelvo el mensaje
     if (cargando) {
-        return <h3 className="jumbo">Cargando artículos...</h3>;
+        return <h3 className="jumbo">Cargando artículo...</h3>;
     }
     
     // Si la consulta fue realizada de forma correcta
@@ -47,7 +47,7 @@ const Eliminar = () => {
     return (        
         
         <article className="articulo-detalle">
-            <h2 className='eliminar-receta'>Confirmar eliminación de la receta</h2>
+            <h2 className='eliminar-receta'>Confirmar eliminación</h2>
 
             {/* Imagen */}
             <div className="imagen-articulo grande">
@@ -58,18 +58,19 @@ const Eliminar = () => {
             <div className="datos">
                 <h3>{datos.consulta.titulo}</h3>
                 <div className='fechas'>
-                
-                    <p className="fecha">
-                        Creado: {" "} 
-                        {fechaFormateada(datos.consulta.fecha)} 
-                        <span className="relativa"> ( {tiempoRelativo(datos.consulta.fecha)} )</span>
-                    </p>                      
 
-                    <p className="fecha">
-                        Modificado:  {" "}
-                        {fechaFormateada(datos.consulta.fechaActualizacion)} 
-                        <span className="relativa"> ( {tiempoRelativo(datos.consulta.fechaActualizacion)} )</span>
-                    </p> 
+                    <div className='fecha'>
+                        <p>Creada:</p>
+                        <p>{fechaFormateada(datos.consulta.fecha)} - {tiempoRelativo(datos.consulta.fecha)} </p>
+                    </div>
+
+                    <div className='fecha'>
+                        <p>Modificada:</p>
+                        <p>
+                            {fechaFormateada(datos.consulta.fechaActualizacion)} - {tiempoRelativo(datos.consulta.fechaActualizacion)}  
+                        </p>
+
+                    </div>   
 
                 </div>  
                 
@@ -80,7 +81,11 @@ const Eliminar = () => {
                     <Link to="/articulos">
                         <button className="back">Volver</button>
                     </Link>
-                    <button className="delete" onClick={() => {eliminar(datos.consulta._id)}}>Confirme su eliminación. Acción definitiva</button>
+                    <button
+                        className="delete" onClick={
+                            () => {eliminar(datos.consulta._id)}
+                        }>Eliminación definitiva
+                    </button>
                 </div>
             </div>
 

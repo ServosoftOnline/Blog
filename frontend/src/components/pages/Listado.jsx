@@ -27,6 +27,8 @@ export const Listado = ({datos}) => {
                         
                         <article className="articulo-item" key={articulo._id}>
 
+                            <h3 className='titulo-item'> <Link to={"/articulo/"+articulo._id}>{articulo.titulo}</Link> </h3>
+                            
                             <div className="imagen-articulo">
                                 <Link to={"/articulo/"+articulo._id}>
                                     <img src={articulo.imagen} alt="Imagen" />
@@ -35,22 +37,22 @@ export const Listado = ({datos}) => {
 
                             <div className="datos">
                                 
-                                <h3> <Link to={"/articulo/"+articulo._id}>{articulo.titulo}</Link> </h3>   
+                                <h3 className='titulo-datos'>
+                                    <Link to={"/articulo/"+articulo._id}>{articulo.titulo}</Link>
+                                </h3>   
 
                                 <div className='fechas'>
 
-                                    <p className="fecha">
-                                        Creado: {" "} 
-                                        {fechaFormateada(articulo.fecha)} 
-                                        <span className="relativa"> ( {tiempoRelativo(articulo.fecha)} )</span>
-                                    </p>                      
+                                    <div className='fecha'>
+                                        <p>Creada:</p>
+                                        <p>{fechaFormateada(articulo.fecha)} - {tiempoRelativo(articulo.fecha)} </p>
+                                    </div>
 
-                                    <p className="fecha">
-                                        Modificado:  {" "}
-                                        {fechaFormateada(articulo.fechaActualizacion)} 
-                                        <span className="relativa"> ( {tiempoRelativo(articulo.fechaActualizacion)} )</span>
-                                    </p> 
-
+                                    <div className='fecha'>
+                                        <p>Modificada:</p>
+                                        <p>{fechaFormateada(articulo.fechaActualizacion)} - {tiempoRelativo(articulo.fechaActualizacion)} </p>
+                                    </div>
+                                    
                                 </div>                                
 
                                 <p>{articulo.contenido}</p>

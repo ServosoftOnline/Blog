@@ -13,6 +13,7 @@
   background: var(--verdeOliva);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: relative;  
+  
 }
 
 /* El menú es horizontal por defecto */
@@ -88,6 +89,8 @@
 
   .seeker-content {  
     display:flex;
+    justify-content: center;
+    margin-top: 20px;    
   }
 
   .seeker-menu {
