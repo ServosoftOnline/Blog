@@ -132,7 +132,7 @@
     }
   }
 
-  .titulo-datos {
+  .titulo {
     display: none;
   }
   
@@ -174,5 +174,10 @@
     color: var(--textoSecundario);
     line-height: 1.2;
   }
-  /* FIN DE NUEVOS ESTILOS */
+
+  .articulo-item .datos .contenido {
+    margin-bottom: 30px;
+  }
+
+  
 }

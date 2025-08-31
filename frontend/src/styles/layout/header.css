@@ -79,7 +79,10 @@
     transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     z-index: 10;
     list-style: none;
-    padding: 2rem 0;
+    padding-top: 3rem; 
+    padding-bottom: 2rem; 
+    padding-left: 0;
+    padding-right: 0;    
   }
 
   /* La clase 'show' hace visible el menú */

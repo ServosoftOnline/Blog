@@ -12,15 +12,18 @@ const Inicio = () => {
 
             <h3>{anchoActual}</h3>
             <div className='Bienvenida'>
-                <h2>Bienvenido al blog culinario</h2>                
-                <p>Blog desarrollado con el Stack MERN (MongoDb, Express, React y Nodejs)</p>
+
+                <div className='logo-en-construccion'>
+                    <i className="fa-solid fa-cogs"></i>                
+                </div>  
+
+                <div>
+                    <h2>Bienvenido al blog culinario <span className="texto-coloreado">construcción</span> </h2>
+                    <p>Desarrollado con el Stack MERN (MongoDb, Express, React y Nodejs)</p>
+                </div>
+                
             </div>
             
-            {/* Mensaje de "En Construcción" */}
-            <div className='en-construccion'>
-                <i className="fa-solid fa-cogs"></i>
-                <p> Blog en construcción</p>
-            </div>            
 
             {/* Botones */}
             <div className='botones-articulos'>

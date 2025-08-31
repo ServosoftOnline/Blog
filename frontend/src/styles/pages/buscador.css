@@ -80,6 +80,7 @@
 
     .search-nav-container {    
         margin-top: 5px;
+        margin-bottom: 10px;
         
     }
     .search-nav-container input[type="text"] {

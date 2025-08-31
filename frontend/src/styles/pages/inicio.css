@@ -1,10 +1,17 @@
+/* ===== Puntos de Ruptura (Breakpoints) ===== */
+/* Móviles pequeños: max-width: 576px */
+/* Móviles y tabletas (vertical): max-width: 768px */
+/* Tabletas (horizontal): max-width: 992px */
+/* Monitores: min-width: 1200px */
+
 .Bienvenida {
-  display:flex;
-  flex-direction: column;  
+  display:flex;  
+  align-items: center;
   margin-bottom: 20px;
+  gap: 20px;
 }
 
-.en-construccion {
+.logo-en-construccion {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -12,9 +19,35 @@
   padding: 5px;
   margin-top: 30px;
   margin-bottom: 30px;
-  color: var(--naranjaQuemado); /* o el color que prefieras */
+  color: var(--naranjaQuemado); 
 }
 
-.en-construccion i {
+.logo-en-construccion i {
   font-size: 3rem; /* Ajusta el tamaño del ícono */  
+}
+
+.texto-coloreado {
+  /* Hace que el texto sea un poco más grueso para que el degradado se vea mejor */
+  font-weight: bold;
+
+  /* Define el degradado. Empieza con un color, pasa por otro, y termina con un tercero. */  
+  background-image: linear-gradient(to right, var(--verdeClaro), var(--naranjaQuemado), var(--marron));
+
+  /* Esto "recorta" el fondo (el degradado) para que solo sea visible dentro de las letras del texto. */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Hace que el color del texto sea transparente, permitiendo que el degradado se vea a través de él. */
+  color: transparent;
+}
+
+/* DISEÑO RESPONSIVE */
+
+/* Móviles pequeños: max-width: 576px */
+@media (max-width: 576px) {
+
+  .logo-en-construccion {
+    display: none;  
+  }
+
 }

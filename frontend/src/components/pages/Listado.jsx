@@ -37,7 +37,7 @@ export const Listado = ({datos}) => {
 
                             <div className="datos">
                                 
-                                <h3 className='titulo-datos'>
+                                <h3 className='titulo'>
                                     <Link to={"/articulo/"+articulo._id}>{articulo.titulo}</Link>
                                 </h3>   
 
@@ -55,7 +55,7 @@ export const Listado = ({datos}) => {
                                     
                                 </div>                                
 
-                                <p>{articulo.contenido}</p>
+                                <p className='contenido'>{articulo.contenido}</p>
 
                                 <div className='botones-articulos'>
                                     <Link to={"/editar/" + articulo._id} className="edit">Editar</Link>                                   
