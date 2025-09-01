@@ -72,7 +72,7 @@ const Editar = () => {
             formData.append("file0", compressedFile);
             
             // Subo la imagen y almaceno lo devuelvo en respuestaSubida
-            const respuestaSubida = await actualizarImagen(Global.url + 'subir-imagen-cloudinary/', formData, 'POST');  
+            const respuestaSubida = await actualizarImagen(Global.url + 'subir-imagen-cloudinary', formData, 'POST');  
 
             // Modifico los parámetros añadiendo la url devuelta por cloudinary en la respuesta
             parametros = {

@@ -49,7 +49,7 @@ const Crear = () => {
                 const compressedFile = await comprimirImagen(fileInput.files[0]);                
                 const formData = new FormData();
                 formData.append('file0', compressedFile);
-                const respuestaSubida = await fetchData(Global.url + 'subir-imagen-cloudinary/', formData, 'POST');
+                const respuestaSubida = await fetchData(Global.url + 'subir-imagen-cloudinary', formData, 'POST');
                
                 // Modifico el objeto nuevoArticulo con el link de la imagen devuelto en la subida
                 nuevoArticulo = {
