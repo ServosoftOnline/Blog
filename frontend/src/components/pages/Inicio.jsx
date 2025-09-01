@@ -10,14 +10,14 @@ const Inicio = () => {
     return (
         <div>
 
-            <h3>{anchoActual}</h3>
+            {/* <h3>{anchoActual}</h3> */}
             <div className='Bienvenida'>
 
                 <div className='logo-en-construccion'>
                     <i className="fa-solid fa-cogs"></i>                
                 </div>  
 
-                <div>
+                <div className='texto-bienvenida'>
                     <h2>Bienvenido al blog culinario <span className="texto-coloreado">en construcción</span> </h2>
                     <p>Desarrollado con el Stack MERN (MongoDb, Express, React y Nodejs)</p>
                 </div>
