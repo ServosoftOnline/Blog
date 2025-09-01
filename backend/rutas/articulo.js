@@ -21,7 +21,7 @@ import express from "express";
 const routerArticulo = express.Router();
 
 // Importa el middleware de Multer configurado para Cloudinary
-import upload from '../middleware/subirImagen.jsx'; // Asegúrate de crear este archivo
+import upload from '../middleware/subirImagen.js'; // Asegúrate de crear este archivo
 
 // Importo desextructurando los métodos de mi controlador articulo
 import  {

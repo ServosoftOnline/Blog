@@ -121,4 +121,47 @@
         7. Acabar con la fase de desarrollo
         8. Pasar a la fase de producción.
 
+
+MIS ANOTACIONES:
+
+	- mongoDB Atlas:
+
+		email: servosoft2016@gmail.com
+		pass: contraseña segura proporcionada desde firefox. Contraseña guardada en el gestor de contraseñas de servosoft2016@gmail.com
+
+		Cluster: 
+			Proveedor: aws
+			Región: Paris
+			Nombre: Cluster0
+			
+			Conexión al Cluster 0:
+				ip adress: 0.0.0.0/0 debido a que no tengo ip fija
+				database user: username: servosoft2016, password: rnjupI3iHNHtt0qZ
+				Conecto mi aplicación mediante drivers:
+					- Me proporciona una conexión. La dejo comentada en mis vbles de entorno y añado el .env en el gitignore
+					- La añado a mis vbles de entorno del backend
+					- La uso en mi componente conexión
+
+	- Cloudinary
+
+        - Servidor de imágenes
+		- email: servosoft2016@gmail.com almacenada en el gestor de contraseñas de servosoft2016@gmail.com
+		
+
+	- Render
+		- Accedo directamente con mi cuenta de github
+		- Desplegó bién la aplicación y me proporciono esta url para mi blog culinario: https://blog-culinario.onrender.com
+
+	- Vercel
+		- Me proporciono esta url: https://blog-six-xi-33.vercel.app
+		- La renombre a: https://recetas-online.vercel.app/
+		- prueba: oscarfernandezsantiago@gmail.com
+		- Str@tocaster2003
+		- Entra pero no contiene 
+
+		- prueba2: servosoft2016@gmail.com no contiene cuenta asociada de vercel
+
+
+
+
         
