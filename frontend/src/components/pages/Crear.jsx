@@ -45,13 +45,11 @@ const Crear = () => {
             // Solo si tengo un fileInput subo la imagen
             if (fileInput?.files[0]) {
                 
-                // Comprimo la imagen antes de subirla
-                const compressedFile = await comprimirImagen(fileInput.files[0]);
-
-                // Creo y añado la información al formdata
+                // Comprimo la imagen antes de subirla Creo y añado la información al formdata
+                const compressedFile = await comprimirImagen(fileInput.files[0]);                
                 const formData = new FormData();
                 formData.append('file0', compressedFile);
-                const respuestaSubida = await fetchData(Global.url + 'subir-imagen-cloudinary/', formData, 'POST');                     
+                const respuestaSubida = await fetchData(Global.url + 'subir-imagen-cloudinary/', formData, 'POST');
                
                 // Modifico el objeto nuevoArticulo con el link de la imagen devuelto en la subida
                 nuevoArticulo = {

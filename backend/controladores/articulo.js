@@ -35,21 +35,12 @@
 
 import Articulo from "../modelos/Articulo.js";
 import validar from "../helpers/validar.js";
-import { unlink } from 'fs/promises';
-import fs from "fs";
 
-// Para optimizar el almacenamiento de imagenes de forma remota en cloudinary
+// Optimiza las imagenes antes de subirlas a cloudinary
 import sharp from 'sharp';
-import cloudinary from 'cloudinary';
 
-// Para almacenar imagenes de forma local. Solo válido en la fase de desarrollo
-import path from "path";
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-
-// Información necesaria para el conectar a Cloudinary usando las variables de entorno
+// Cloudinary
+import { v2 as cloudinary } from 'cloudinary';
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -129,10 +120,8 @@ export const crearDocumento = async (req, res) => {
 
 // Metodo para obtener un listado de articulos con parámetros de busqueda opcionales
 export const listadoArticulos = async (req, res) => {
-    try {
 
-        // Simular retardo de 2 segundos (2000 ms)
-        // await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
 
         // Hago la consulta de todos los articulos        
         let consulta = Articulo.find({});        
@@ -197,7 +186,7 @@ export const uno = async(req, res) => {
 
 }
 
-// Método para borrar un artículo
+// Método para borrar una imagen desde cloudinary. No borrará las que se encuentren en la carpeta blog_culinario_iniciales
 export const borrar = async (req, res) => {
 
     try {
@@ -209,8 +198,7 @@ export const borrar = async (req, res) => {
         const consulta = await Articulo.findOneAndDelete({_id:idABorrar});                 
 
         if (consulta) {
-
-            // Si existe una imagen asociada, la borramos de Cloudinary
+            
             // AÑADIMOS ESTA COMPROBACIÓN ADICIONAL
             if (consulta.public_id_imagen) {
               
@@ -312,7 +300,6 @@ export const subirImagenCloudinary = async (req, res) => {
 
   try {
 
-    // Si no hay un archivo, devuelve un error
     if (!req.file) {
       return res.status(400).send({
         status: "error",
@@ -320,13 +307,13 @@ export const subirImagenCloudinary = async (req, res) => {
       });
     }
 
-    // Sube el archivo a Cloudinary
-    const resultado = await cloudinary.uploader.upload(req.file.path, {
-      folder: "blog_culinario" // Opcional: crea una carpeta en Cloudinary
-    });
+    // Crea un data URI con el buffer del archivo
+    const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
 
-    // Elimina el archivo temporal de la carpeta local
-    fs.unlinkSync(req.file.path);
+    // Ahora, sube la imagen usando el data URI
+    const resultado = await cloudinary.uploader.upload(dataUri, {
+      folder: "blog_culinario"
+    });
 
     // Devuelve la URL de la imagen subida
     return res.status(200).send({
@@ -342,56 +329,55 @@ export const subirImagenCloudinary = async (req, res) => {
       mensaje: "Error interno del servidor al subir la imagen."
     });
   }
+
 };
 
 
-// Metodo para subir una imagen optimizada de prueba inicial a cloudinary. Solo la uso desde postman. No desde el front
+// Metodo para subir las fotografias para la carpeta blog_culinario_iniciales. Solo lo usaré desde postman. no front
 export const subirImagenInicialCloudinary = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).send({
+                status: "error",
+                mensaje: "No se ha proporcionado ningún archivo."
+            });
+        }
 
-  try {
+        const compressedImageBuffer = await sharp(req.file.buffer)
+            .resize({ width: 1200, withoutEnlargement: true })
+            .jpeg({ quality: 80 })
+            .toBuffer();
 
-    // Si no hay un archivo, devuelve un error
-    if (!req.file) {
-      return res.status(400).send({
-        status: "error",
-        mensaje: "No se ha proporcionado ningún archivo."
-      });
+        // Creamos la promesa para manejar la subida a Cloudinary
+        const resultado = await new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream({
+                folder: "blog_culinario_iniciales"
+            }, (error, result) => {
+                if (error) {
+                    return reject(new Error(error.message));
+                }
+                resolve(result);
+            });
+
+            // Escribimos el buffer de la imagen en el stream de subida
+            stream.end(compressedImageBuffer);
+        });
+
+        // La promesa se resolvió, ahora podemos enviar la respuesta
+        return res.status(200).send({
+            status: "success",
+            url: resultado.secure_url,
+            public_id: resultado.public_id
+        });
+
+    } catch (error) {
+        console.error("Error al subir la imagen inicial a Cloudinary:", error);
+        return res.status(500).send({
+            status: "error",
+            mensaje: "Error interno del servidor al subir la imagen inicial.",
+            error: error.message
+        });
     }
-
-    // Usamos sharp para redimensionar la imagen antes de subirla
-    const compressedImageBuffer = await sharp(req.file.path)
-      .resize({ width: 1200, withoutEnlargement: true }) // Redimensiona a un ancho máximo de 1200px
-      .jpeg({ quality: 80 }) // Comprime a calidad 80
-      .toBuffer();
-
-    // Ahora subimos el buffer de la imagen procesada a Cloudinary
-    const resultado = await cloudinary.uploader.upload_stream({
-      folder: "blog_culinario_iniciales"
-    }, (error, result) => {
-      if (error) {
-        throw new Error(error);
-      }
-      
-      // Elimina el archivo temporal de la carpeta local
-      fs.unlinkSync(req.file.path);
-      
-      // Devuelve la URL de la imagen subida
-      return res.status(200).send({
-        status: "success",
-        url: result.secure_url,
-        public_id: result.public_id
-      });
-    }).end(compressedImageBuffer);
-
-
-  } catch (error) {
-    console.error("Error al subir la imagen inicial a Cloudinary:", error);
-    return res.status(500).send({
-      status: "error",
-      mensaje: "Error interno del servidor al subir la imagen inicial.",
-      error: error.message
-    });
-  }
 };
 
 
@@ -474,8 +460,7 @@ export const buscador = async (req, res) => {
     }
 };
 
-
-// Método para borrar todos los articulo. Solo usado en fase de desarrpññp
+// Método para borrar todas las imagenes de la carpeta blog_culinario de cloudinary
 export const borrarTodosCloudinary = async (req, res) => {
 
     try {        

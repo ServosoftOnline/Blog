@@ -115,8 +115,7 @@ const Editar = () => {
 
             <form className="formulario" onSubmit={handleSubmit}>
 
-                <div className="form-group">
-                    
+                <div className="form-group">                    
                     {articulo?.consulta?.imagen &&
                         <img                                                 
                             src={`${articulo.consulta.imagen}`} 

@@ -9,6 +9,7 @@ import { useApi } from "../../hooks/useApi";
 import { Global } from "../../helpers/Global";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import './../../styles/pages/iniciar.css';
 
 // Componente
 const Iniciar = () => {   
@@ -73,8 +74,7 @@ const Iniciar = () => {
             }
         ];
 
-        // Paso 1: Eliminar los documentos existentes        
-        // await eliminarColeccion(`${Global.url}borrar-todos`, null, "DELETE");        
+        // Paso 1: Eliminar los documentos existentes                
         await eliminarColeccion(`${Global.url}borrar-todos-cloudinary`, null, "DELETE");  
 
         // Paso 2: Insertar cada receta por separado
@@ -99,7 +99,7 @@ const Iniciar = () => {
     return (
         <div className="jumbo">            
 
-            <h3>Proceso irreversible: Se borrarán todas las recetas y se restaurarán unas nuevas a modo de ejemplo </h3>
+            <h3 className="advertencia">Proceso irreversible: Se borrarán todas las recetas y se restaurarán unas nuevas a modo de ejemplo </h3>
 
             <form onSubmit={handleSubmit}>  
 
