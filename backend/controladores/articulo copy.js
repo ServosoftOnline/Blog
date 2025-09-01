@@ -40,7 +40,7 @@ import fs from "fs";
 
 // Para optimizar el almacenamiento de imagenes de forma remota en cloudinary
 import sharp from 'sharp';
-import cloudinary from 'cloudinary';
+// import cloudinary from 'cloudinary';
 
 // Para almacenar imagenes de forma local. Solo válido en la fase de desarrollo
 import path from "path";
@@ -48,6 +48,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Para almacenar imagenes en los servidores de cloudinary
+import { v2 as cloudinary } from 'cloudinary';
 
 // Información necesaria para el conectar a Cloudinary usando las variables de entorno
 cloudinary.config({
@@ -307,6 +309,71 @@ export const editar = async (req, res) => {
 
 }
 
+// Método para subir imágenes al backend
+export const subir = async (req, res) => {
+
+    try {        
+
+        // Recogo el id del articulo
+        const id = req.params.id;        
+
+        // Compruebo que se halla subido al menos un archivo
+        if(!req.file && !req.files) {
+            return res.status(404).json({
+                status: 'error',
+                mensaje: 'No se adjunto ningun archivo en la subida'
+            });
+
+        }
+
+        // Obtengo el nombre de la imagen
+        const archivo = req.file.originalname;
+
+        // Obtengo su extension
+        const archivo_split = archivo.split('\.');
+        const extension = archivo_split[1];
+
+        // Compruebo si la extension correcta
+        if(extension != 'jpg' && extension != 'jpeg' && extension != 'png' && extension != 'gif') {
+
+            // Borro el archivo que se subió por error y respondo con error
+            await unlink(req.file.path);
+
+            return res.status(400).json({
+                status: 'error',
+                mensaje: 'Extensión incorrecta. Extensiones correctas: jpg, jpeg, png o gif',
+                extension_erronea: extension
+            });
+        }
+
+        // Actualizo el documento asociado al id añadiendo la ruta de la imagen
+        await Articulo.findOneAndUpdate(
+            { _id: id },
+            {imagen: req.file.filename},
+            { new: true }
+        ); 
+
+        // Respondo que se realizó la operacion de forma correcta        
+        return res.status(200).json({
+            status: 'success',
+            mensaje: "imagen subida correctamente",            
+            file: req.file
+        });
+
+
+    } catch (error) {
+
+        // Devuelvo que se produjo un error al subir la imagen
+        return res.status(500).json({
+            status: 'error',            
+            mensaje: "Error al subir la imagen",
+            error: error.message
+        });
+
+    }
+    
+}
+
 // Metodo para subir una imagen a cloudinary
 export const subirImagenCloudinary = async (req, res) => {
 
@@ -474,6 +541,45 @@ export const buscador = async (req, res) => {
     }
 };
 
+
+// Método para borrar todos los articulo. Solo usado en fase de producción
+export const borrarTodosLocal = async (req, res) => {
+
+    try {        
+
+        // Paso 1: Eliminar todos los articulos en MongoDB
+        await Articulo.deleteMany({});
+
+        // Paso 2: Eliminar los archivos de la carpeta backend/imagenes/articulos que empiecen por "articulo"
+        const dirPath = path.join(__dirname, "../imagenes/articulos");
+
+        // Leer los ficheros de la carpeta
+        const files = await fs.promises.readdir(dirPath);
+
+        for (const file of files) {
+            if (file.startsWith("articulo")) {
+                try {
+                    await fs.promises.unlink(path.join(dirPath, file));
+                } catch (err) {
+                    console.error(`Error al borrar ${file}:`, err.message);
+                }
+            }
+        }
+
+        // Paso 3: Responder al cliente
+        return res.status(200).json({
+            status: "success",
+            mensaje: "Todos los documentos e imágenes eliminados correctamente"
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            status: "error",
+            mensaje: "Error al eliminar todos los artículos",
+            error: error.message
+        });
+    }
+};
 
 // Método para borrar todos los articulo. Solo usado en fase de desarrpññp
 export const borrarTodosCloudinary = async (req, res) => {

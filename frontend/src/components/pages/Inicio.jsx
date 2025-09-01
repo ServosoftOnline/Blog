@@ -18,7 +18,7 @@ const Inicio = () => {
                 </div>  
 
                 <div>
-                    <h2>Bienvenido al blog culinario <span className="texto-coloreado">construcción</span> </h2>
+                    <h2>Bienvenido al blog culinario <span className="texto-coloreado">en construcción</span> </h2>
                     <p>Desarrollado con el Stack MERN (MongoDb, Express, React y Nodejs)</p>
                 </div>
                 

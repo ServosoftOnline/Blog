@@ -27,6 +27,10 @@ const almacenamiento = multer.diskStorage({
 // Indico a multer las caracteristicas del almacenamiento
 const subidas = multer({storage:almacenamiento});
 
+// --- MULTER PARA CLOUDINARY (usa memoria, no disco) ---
+const almacenamientoMemoria = multer.memoryStorage();
+const subidasMemoria = multer({ storage: almacenamientoMemoria });
+
 // Importo desextructurando los métodos de mi controlador articulo
 import  {prueba, datosDelCurso, restoDeCursos, crearDocumento, listadoArticulos, uno,
         borrar, editar, subir, subirImagenCloudinary, subirImagenInicialCloudinary, borrarImagenCloudinary, buscador,
@@ -68,11 +72,14 @@ routerArticulo.put('/articulo/:id', editar);
 // Ruta para subir una imagen local aplicando el middleware multer
 routerArticulo.post('/subir-imagen/:id',[subidas.single("file0")], subir);
 
+
+
+
 // Ruta para subir una imagen a cloudinary
-routerArticulo.post("/subir-imagen-cloudinary", subidas.single('file0'), subirImagenCloudinary);
+routerArticulo.post("/subir-imagen-cloudinary", subidasMemoria.single('file0'), subirImagenCloudinary);
 
 // Ruta para subir una imagen inicial a cloudinary
-routerArticulo.post("/subir-imagen-cloudinary-inicial", subidas.single('imagen'), subirImagenInicialCloudinary);
+routerArticulo.post("/subir-imagen-cloudinary-inicial", subidasMemoria.single('imagen'), subirImagenInicialCloudinary);
 
 // Ruta para borrar una imagen de cloudinary
 routerArticulo.delete("/borrar-imagen-cloudinary", borrarImagenCloudinary);
