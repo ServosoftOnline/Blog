@@ -1,8 +1,8 @@
 # 🍽️🚧 **BLOG GASTRONÓMICO EN CONSTRUCCIÓN / FOOD BLOG UNDER CONSTRUCTION** 🚧🍽️
 
-> 🛠️ **Español:** Este proyecto está en desarrollo activo. Funcionalidades, recetas, código y documentación pueden cambiar en cualquier momento. 
+> 🛠️ **Español:** Este proyecto está en desarrollo activo. Funcionalidades, recetas, código y documentación pueden cambiar en cualquier momento. **Se encuentra despleguado en https://recetas-online.vercel.app/**
  
-> 🛠️ **English:** This project is under active development. Features, recipes, code, and documentation may change at any time.  
+> 🛠️ **English:** This project is under active development. Features, recipes, code, and documentation may change at any time.  **It is deployed in https://recetas-online.vercel.app/**
 
 ---
 
@@ -18,12 +18,22 @@
 ---
 
 ## 📌 Descripción (Español)
-Este es un **blog gastronómico** desarrollado con un **frontend** en React (Vite) y un **backend** en Node.js + Express, con base de datos MongoDB. La aplicación permite **publicar, gestionar y comentar recetas** de forma sencilla, incluyendo imágenes, descripciones e ingredientes.
+He desarrollado un blog de recetas de cocina con funcionalidades **CRUD (Crear, Leer, Actualizar, Eliminar).** La aplicación permite a los usuarios gestionar recetas completas con **subida de imágenes a través de Cloudinary, optimizando la experiencia visual con un **diseño completamente responsive.**
+
+El proyecto está construido como una aplicación **MERN (MongoDB, Express, React, Node.js)** y demuestra habilidades clave en el despliegue full-stack y la integración con servicios de terceros.
+
+**Actualmente, el proyecto se encuentra en desarrollo**. La próxima fase incluirá la implementación de autenticación de usuarios con JWT, lo que permitirá a los usuarios registrarse y gestionar sus propias recetas de forma segura.
 
 ---
 
 ## 📌 Description (English)
-This is a **food blog** developed with a **frontend** in React (Vite) and a **backend** in Node.js + Express, using MongoDB as the database. The application allows users to **publish, manage, and comment on recipes** easily, including images, descriptions, and ingredients.
+I have developed a cooking recipe blog with **CRUD (Create, Read, Update, Delete) functionality.** The application allows users to manage complete recipes with **image uploads via Cloudinary, optimizing the visual experience with a **fully responsive design.**
+
+The project is built as a **MERN application (MongoDB, Express, React, Node.js)** and demonstrates key skills in full-stack deployment and integration with third-party services.
+
+**The project is currently under development**. The next phase will include implementing user authentication with JWT, allowing users to register and manage their own recipes securely.
+
+
 
 ---
 
